@@ -43,7 +43,6 @@ bool	parse_textures(int fd, t_game_data *initData)
 	return (true);
 }
 
-
 bool	parsing(int fd)
 {
 	t_game_data	*initData;

@@ -21,3 +21,17 @@ typedef struct s_game_data
 	t_rgb	celling;
 } 		t_game_data;
 
+
+//verif_map.c
+
+//verif_elements.c
+bool	good_file(char *file_path);
+
+//verif_file.c
+bool	verify_file(char *input);
+
+//parsing_start.c
+void	clean_line(char *line);
+bool	parse_textures(int fd, t_game_data *initData);
+bool	parsing(int fd);
+

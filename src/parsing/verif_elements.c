@@ -20,3 +20,4 @@ bool	good_file(char *file_path)
 		return (false);
 	}
 }
+
