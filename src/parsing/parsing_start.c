@@ -1,4 +1,4 @@
-#include "../inc/parsing.h"
+#include "../../inc/parsing.h"
 
 void	clean_line(char *line)
 {
@@ -8,52 +8,75 @@ void	clean_line(char *line)
 	}
 }
 
+int search_elements(char *line, char *type, int fd, t_game_data *initData)
+{
+	char	**pline; 
+	int		i;
+
+	i = 0;
+	skip_tab_spaces(line);
+	if (token_found(type[i], line))
+	{
+		skip_tab_spaces(line);
+		if (save_texture(type[i], line, initData))
+			i++;
+		else
+			return(exit_textures(fd, *pline, initData));
+	}
+	if (i == 6)
+	{
+		print_message("Saved all textures");
+		clean_line(pline);
+		return (i);
+	}
+	clean_line(pline);
+	line = getnextline(fd);
+	pline = &line;
+	return (i);
+}
+
 bool	parse_textures(int fd, t_game_data *initData)
 {
 	char	*type[] = {"NO", "SO", "WE", "EA", "F", "C"};
 	char	*line;
-	char	*pline; 
-	int		i;
+	int		parsed_elements;;
+	int		minimum_elements;
 
-	i = 0;
-	line = getnextline(fd);
-	pline = &line;
-	while (!is_eof(line))
+	minimum_elements = 6;
+	line = get_next_line(fd);
+	while (!is_eof(*line))
 	{
-		skip_spaces(line);
-		if (token_found(type[i], line))
-		{
-			save_texture(type[i], initData);
-			i++;
-		}
-		if (i == 6)
-		{
-			print_message("Saved all textures");
-			clean_line(pline);
-			return (true);
-		}
-		clean_line(pline);
-		line = getnextline(fd);
+		parsed_elements = search_elements(line, type, fd, initData);
 	}
-	if (i < 6)
+	if (parsed_elements < minimum_elements)
 	{
-		print_error("Parsing intit info", "Did not have all the necessary textures");
+		print_error("Parsing intit info", "Did not have \
+		all the necessary textures");
 		return (false);
 	}
 	return (true);
 }
 
-bool	parsing(int fd)
+bool	parsing(char *path)
 {
 	t_game_data	*initData;
 	char	*line;
+	int		fd;
 
 	initData = malloc(sizeof(t_game_data));
+	if (!initData)
+		return (print_error(NULL, "can not create initData"));
+	fd = open(path, O_RDONLY);
 	if (!parse_textures(fd, initData))
 	{
-		//clean initData;
+		//initData cleaned in parse_texture function exit_textures;
+		close(fd);
 		return (false);
 	}
 	else
+	{
+		close(fd);
 		printf("parsed all init data\n");
+		return (true);
+	}
 }

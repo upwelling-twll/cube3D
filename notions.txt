@@ -1,0 +1,54 @@
+/*
+parsing elements: each texture file must be .mlx format and it must be sucessfully processed by mlx, 
+this can be checked through deducated mlx function, that will return the pointer
+(something like ptr = mlx_open_file(file.mlx); if (!ptr) -> file is incorrect)
+*parsing map: map can be any shape
+this map is ok:
+111111111111111
+111001 11
+1 1W1
+110010
+
+parsing map: any map is valid untill there is no nl between lines and 
+there is no situation when empty_space is surrounded by 0 or character(NSWE):
+
+examples of invalis empty space situation:
+
+111111
+110001
+100001
+1S0001
+100001
+1 1111
+111111
+
+111111
+110001
+100001
+1S0001
+111001
+1 0111
+111111
+
+111111
+110001
+100001
+1S0001
+1 0001
+111111
+111111
+
+valid empty_space situation:
+111111
+110001
+100001
+1S0001
+110001
+1 1111
+111111
+
+1111
+1111
+11S1
+1111
+*/

@@ -1,6 +1,11 @@
+#ifndef PARSING_H
+# define PARSING_H
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include "./utils.h"
 
 typedef	struct s_rgb
 {
@@ -33,5 +38,6 @@ bool	verify_file(char *input);
 //parsing_start.c
 void	clean_line(char *line);
 bool	parse_textures(int fd, t_game_data *initData);
-bool	parsing(int fd);
+bool	parsing(char *path);
 
+#endif
