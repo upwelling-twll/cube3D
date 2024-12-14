@@ -1,4 +1,4 @@
-#include "../inc/parsing.h"
+#include "../../inc/utils.h"
 
 bool	good_file(char *file_path)
 {
@@ -19,5 +19,6 @@ bool	good_file(char *file_path)
 		print_error(file_path, "File error: this file can not be read from");
 		return (false);
 	}
+	return (false);
 }
 

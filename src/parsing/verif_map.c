@@ -1,3 +1,5 @@
+#include "../../inc/utils.h"
+
 bool	is_valid_char(char c)
 {
 	if (c == '0' || c == '1') //0 - space, 1 - wall

@@ -1,4 +1,4 @@
-#include "./inc/utils.h"
+#include "../inc/utils.h"
 
 int exit_program(char *text)
 {

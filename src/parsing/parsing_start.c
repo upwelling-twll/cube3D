@@ -1,4 +1,4 @@
-#include "../../inc/parsing.h"
+#include "../../inc/utils.h"
 
 void	clean_line(char *line)
 {
@@ -8,29 +8,30 @@ void	clean_line(char *line)
 	}
 }
 
-int search_elements(char *line, char *type, int fd, t_game_data *initData)
+int search_elements(char *line, char **type, int fd, t_game_data *initData)
 {
 	char	**pline; 
 	int		i;
 
 	i = 0;
 	skip_tab_spaces(line);
+	pline = &line;
 	if (token_found(type[i], line))
 	{
 		skip_tab_spaces(line);
 		if (save_texture(type[i], line, initData))
 			i++;
 		else
-			return(exit_textures(fd, *pline, initData));
+			return(exit_textures( *pline, initData));
 	}
 	if (i == 6)
 	{
-		print_message("Saved all textures");
-		clean_line(pline);
+		print_message("Checked all textures");
+		clean_line(*pline);
 		return (i);
 	}
-	clean_line(pline);
-	line = getnextline(fd);
+	clean_line(*pline);
+	line = get_next_line(fd);
 	pline = &line;
 	return (i);
 }
@@ -60,8 +61,8 @@ bool	parse_textures(int fd, t_game_data *initData)
 bool	parsing(char *path)
 {
 	t_game_data	*initData;
-	char	*line;
-	int		fd;
+	// char		*line;
+	int			fd;
 
 	initData = malloc(sizeof(t_game_data));
 	if (!initData)

@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "./utils.h"
+
 
 typedef	struct s_rgb
 {
@@ -22,8 +22,8 @@ typedef struct s_game_data
 	char	*we_path;
 	char	*ea_path;
 
-	t_rgb	floor;
-	t_rgb	celling;
+	t_rgb	*floor;
+	t_rgb	*celling;
 } 		t_game_data;
 
 

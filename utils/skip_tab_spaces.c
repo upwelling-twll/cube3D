@@ -3,7 +3,7 @@
 bool	is_eof(char c)
 {
 	if (c == '\0')
-		retun (true);
+		return (true);
 	else
 		return (false);
 }
@@ -12,7 +12,7 @@ bool	is_eof(char c)
 bool	is_tab_or_space(char c)
 {
 	if (c == ' ' || c == '\t')
-		retun (true);
+		return (true);
 	else
 		return (false);
 }
