@@ -20,6 +20,18 @@ bool	token_found(char *search, char *input);
 bool	save_texture(char *type, char *line,  t_game_data *initData);
 bool	exit_textures( char *line, t_game_data *initData);
 
+//parse_map.c
+bool	parse_map(char *path, int fd, t_game_data *initData);
+
+//parse_textures.c
+void	clean_line(char *line);
+int 	search_elements(char *line, char **type, int fd, t_game_data *initData);
+bool	parse_textures(int fd, t_game_data *initData);
+
+//parsing.c
+bool	parsing(char *path);
+
+
 //skip_tab_spaces.c
 bool	is_eof(char c);
 bool	is_tab_or_space(char c);

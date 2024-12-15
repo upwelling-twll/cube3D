@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*exit_program(t_bits *base_bits, char **buf, char *result)
+char	*exit_gnl(t_bits *base_bits, char **buf, char *result)
 {
 	t_bits	*tmp;
 	t_bits	*tmp2;
@@ -135,15 +135,15 @@ char	*get_next_line(int fd)
 	{
 		fe = 0;
 		if (fill_buf(&rem_line, &buf, &fe, fd) == NULL)
-			return (exit_program(base_bits, &buf, NULL));
+			return (exit_gnl(base_bits, &buf, NULL));
 		if (fe <= 0)
 			break ;
 		fe = parse_one_bit(&base_bits, buf, &rem_line, &fe);
 		if (fe < 0)
-			return (exit_program(base_bits, &buf, NULL));
+			return (exit_gnl(base_bits, &buf, NULL));
 		if (!fe)
 			free(buf);
 	}
 	line = fill_line(base_bits);
-	return (exit_program(base_bits, &buf, line));
+	return (exit_gnl(base_bits, &buf, line));
 }

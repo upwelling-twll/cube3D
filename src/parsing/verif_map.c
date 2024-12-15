@@ -1,5 +1,27 @@
 #include "../../inc/utils.h"
 
+bool	is_wall(char *line)
+{
+	int	i;
+	int	walls;
+	int	spaces;
+
+	i = 0;
+	walls = 0;
+	spaces = 0;
+	while (line && line != '\n')
+	{
+		if (line[i] == '1')
+			walls++;
+		if (line[i] == ' ')
+			spaces++;
+		i++;
+	}
+	if (walls < 1 || walls+spaces < i)
+		return (false);
+	return (true);
+}
+
 bool	is_valid_char(char c)
 {
 	if (c == '0' || c == '1') //0 - space, 1 - wall
@@ -9,7 +31,7 @@ bool	is_valid_char(char c)
 	return (false);
 }
 
-bool have_walls(char **map, t_map_data *mapInfo)
+bool have_walls(char **map, t_game_data *mapInfo)
 {
 	int	i;
 	int	j;
@@ -29,28 +51,5 @@ bool have_walls(char **map, t_map_data *mapInfo)
 	return (true);
 }
 
-bool	copy_scene_description(int fd, t_scene* data)
-{
-	char	*line;
-	int		nline;
-
-	line = getnextline(fd);
-	while (line)
-	{
-		if (verif_elements(line))
-		{	
-			append_to_list(data->elements, line);
-			free(line);
-			nline++;
-		}
-		else
-		{
-			clean_data();
-			printf("invalid map line[%d]\n", nline);
-			free(line);
-			return (false);
-		}
-	}
-}
 
 //fist argument is a file called  "scene description file with the .cub"

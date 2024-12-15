@@ -8,7 +8,6 @@ bool	is_eof(char c)
 		return (false);
 }
 
-
 bool	is_tab_or_space(char c)
 {
 	if (c == ' ' || c == '\t')

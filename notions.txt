@@ -1,3 +1,17 @@
+/*15 december. must change file parsing logic 
+to make map identification easy:
+1. skip \n and all spaces
+2. copy watever i have 6 times. skiping all \n and spaces
+3. skip \n and spaces
+4. copy all following lines, conserning it is a map
+5. sent it to map verification
+
+6. if 1st line is not wall - map error, exit program
+7. remove all spaces and \n in the end
+8. if last line is not wall - map error, exit program
+9. check each line true: first_non_space_is_1 && last_non_space_is_1
+10. check there is one and only character(NSWE)
+11. for each space check it have no 0 or CHARACTER around
 /*
 parsing elements: each texture file must be .mlx format and it must be sucessfully processed by mlx, 
 this can be checked through deducated mlx function, that will return the pointer

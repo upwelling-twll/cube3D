@@ -6,6 +6,14 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
+typedef struct s_lmap
+{
+	char	*line;
+	int		nrow;
+	int		nlenght;
+	bool	space;
+
+}		t_lmap;
 
 typedef	struct s_rgb
 {
@@ -24,6 +32,8 @@ typedef struct s_game_data
 
 	t_rgb	*floor;
 	t_rgb	*celling;
+
+	t_lmap	**map;
 } 		t_game_data;
 
 
