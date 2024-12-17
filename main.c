@@ -8,6 +8,7 @@ int	main(int argc, char *argv[])
 			return(exit_program("exiting Cube3D"));
 		if (!parsing(argv[1]))
 			return(exit_program("exiting Cube3D"));
+		
 	}
 	else
 		return(exit_program("Program expects 1 parametor: example.cub"));

@@ -103,6 +103,43 @@ void	clean_initData(t_game_data *initData)
 	printf("cleaned initData");
 }
 
+bool	is_empty_line(char *line)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	if (!line)
+		return (false);
+	len = ft_strlen(line);
+	while (i < len && (line[i] == ' ' || line[i] == '\n'))
+		i++;
+	if (line[i] == '\0')
+		return(true);
+	else
+		return (false);
+}
+
+char	*skip_empty_lines(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	if (line)
+	{
+		while (is_empty_line(line) == true)
+		{
+			printf("had empty line:%s$\n", line);
+			if (line)
+				free(line);
+			line = get_next_line(fd);
+		}
+		if (line)
+			return (line);
+	}
+	return (NULL);
+}
+
 bool	exit_textures(char *line, t_game_data *initData)
 {
 	clean_initData(initData);

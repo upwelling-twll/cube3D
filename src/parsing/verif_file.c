@@ -30,7 +30,7 @@ bool 	verify_file_cub(char *input)
 	size_t	len;
 
 	len = ft_strlen(input);
-	if (len > 4 && (input[len - 4] == '.' && input[len - 3] == 'c' \
+	if (len >= 4 && (input[len - 4] == '.' && input[len - 3] == 'c' \
 			&& input[len - 2] == 'u' && input[len - 1] == 'b'))
 	{
 		return (true);

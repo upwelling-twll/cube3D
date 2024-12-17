@@ -8,52 +8,118 @@ void	clean_line(char *line)
 	}
 }
 
-int search_elements(char *line, char **type, int fd, t_game_data *initData)
+int	ft_lstsize_pl(t_parsed_lines *lst)
 {
-	char	**pline; 
 	int		i;
+	t_parsed_lines	*next;
 
-	i = 0;
-	skip_tab_spaces(line);
-	pline = &line;
-	if (token_found(type[i], line))
+	if (lst == NULL)
+		return (0);
+	next = lst->next;
+	i = 1;
+	while (next != NULL)
 	{
-		skip_tab_spaces(line);
-		if (save_texture(type[i], line, initData))
-			i++;
-		else
-			return(exit_textures( *pline, initData));
+		next = next -> next;
+		i++;
 	}
-	if (i == 6)
-	{
-		print_message("Checked all textures");
-		clean_line(*pline);
-		return (i);
-	}
-	clean_line(*pline);
-	line = get_next_line(fd);
-	pline = &line;
 	return (i);
 }
 
-bool	parse_textures(int fd, t_game_data *initData)
+t_parsed_lines	*ft_lstlast_pl(t_parsed_lines *lst)
 {
-	char	*type[] = {"NO", "SO", "WE", "EA", "F", "C"};
+	int	i;
+
+	if (!lst)
+		return (lst);
+	i = ft_lstsize_pl(lst);
+	while (i > 1)
+	{
+		lst = lst->next;
+		i--;
+	}
+	return (lst);
+}
+
+int search_elements(char *line, t_game_data *initData, int pe)
+{
+	if (pe == 0)
+	{
+		// printf("initLines NULL\n");
+		if (!((*initData->initLines)->line = ft_strdup(line)))
+		{
+			if ((*initData->initLines))
+				free((*initData->initLines));
+			return (0);
+		}
+		else if ((*initData->initLines)->line != NULL)
+		{
+			(*initData->initLines)->next = NULL;
+			return (1);
+		}
+	}
+	else
+	{
+		// printf("initLines not NULL\n");
+		t_parsed_lines *new;
+
+		new = malloc(sizeof(t_parsed_lines));
+		if (!new)
+			return (0);
+		new->next = NULL;
+		(ft_lstlast_pl((*initData->initLines)))->next = new;
+		if (!((ft_lstlast_pl((*initData->initLines))->line = ft_strdup(line))))
+		{
+				// if (initData->initLines)
+				// 	free(initData->initLines); //clean the list, clean initLines
+				return (0);
+		}
+		else
+			return (1);
+	}
+	return (0);
+}
+
+bool	parse_textures(int fd, t_game_data *initData, char **map_line)
+{
+	// char	*type[] = {"NO", "SO", "WE", "EA", "F", "C"};
 	char	*line;
-	int		parsed_elements;;
+	int		parsed_elements;
 	int		minimum_elements;
+	t_parsed_lines	*head;
 
 	minimum_elements = 6;
-	line = get_next_line(fd);
-	while (!is_eof(*line))
+	parsed_elements = 0;
+	// printf("init data\n");
+	initData->initLines = (t_parsed_lines**)malloc(sizeof(t_parsed_lines*));
+	*(initData->initLines) = (t_parsed_lines*)malloc(sizeof(t_parsed_lines));
+	(*initData->initLines)->next = NULL;
+	(*initData->initLines)->id = 1;
+	head = *initData->initLines;
+	line = skip_empty_lines(fd);
+	printf("start parse text\n");
+	while (line && !is_eof(*line) && parsed_elements < minimum_elements)
 	{
-		parsed_elements = search_elements(line, type, fd, initData);
+		parsed_elements += search_elements(line, initData, parsed_elements);
+		if (line)
+			free(line);
+		line = skip_empty_lines(fd);
+		*(initData->initLines) = head;
 	}
-	if (parsed_elements < minimum_elements)
+	// printf("hello\n");
+	printf("end parse textures, lst size=%i\n", ft_lstsize_pl(head));
+	if (parsed_elements < minimum_elements || ft_lstsize_pl(head) < 6)
 	{
-		print_error("Parsing intit info", "Did not have \
-		all the necessary textures");
+		print_error("Parsing intit info", "Do not have 6 lines");
+		if (line)
+			free(line);
 		return (false);
+	}
+	if (initData->initLines)
+		print_parsed_textures(*(initData->initLines));
+	if (line)
+	{
+		*map_line = ft_strdup(line);
+		free(line);
 	}
 	return (true);
 }

@@ -1,90 +1,115 @@
 #include "../../inc/utils.h"
 
-bool	is_map(char *line)
-{
-	char	*cpline;
+// bool	is_map(char *line)
+// {
+// 	char	*cpline;
 
-	cpline = line;
-	skip_tab_spaces(cpline);
-	while (!is_eof(*cpline) && !is_end_of_line(*cpline) && !is_tab_or_space(*line))
-	{
-		if (is_wall(line))
-		{
-			printf("wall map line found:\n%s\n", line);
-			return (true);
-		}
-		else if (is_middle_line(cpline))
-		{
-			printf("middle map line found:\n%s\n", line);
-			return (true);
-		}
-	}
-}
+// 	cpline = line;
+// 	skip_tab_spaces(cpline);
+// 	while (!is_eof(*cpline) && !is_end_of_line(*cpline) && !is_tab_or_space(*line))
+// 	{
+// 		if (is_wall(line))
+// 		{
+// 			printf("wall map line found:\n%s\n", line);
+// 			return (true);
+// 		}
+// 		else if (is_middle_line(cpline))
+// 		{
+// 			printf("middle map line found:\n%s\n", line);
+// 			return (true);
+// 		}
+// 	}
+// }
 
-bool	copy_map(char *path, t_game_data *initData, int n)
+char	*skip_textures(int fd)
 {
-	int		fd;
 	char	*line;
-	int		i;
-	
-	i = 0;
-	fd = open(path, O_RDONLY);
-	if (fd > 2)
+	int		nelem;
+	int		minimum_elements;
+
+	nelem = 0;
+	minimum_elements = 6;
+	line = skip_empty_lines(fd);
+	while (line && !is_eof(*line) && nelem < minimum_elements)
 	{
-		line = getnextline(fd);
-		while (!is_map(line))
-		{
-			free(line);
-			line = get_next_line(fd);
-		}
-		initData->map = malloc(sizeof(t_lmap)*n + 1);
-		while (i < n)
-		{
-			initData->map[i] = ft_strdup(line);
-			i++;
-			free(line);
-			line = get_next_line(fd);
-		}
+		nelem++;
 		if (line)
 			free(line);
-		return (true);
+		line = skip_empty_lines(fd);
 	}
-	return (false);
+	return (line);
 }
 
-bool	go_through_map(char *path, int fd, t_game_data* data)
+bool	save_map(char *path, size_t nlines, t_game_data *data)
 {
-	char	*line;
-	int		nline;
+	int	fd;
+	char	*map_line;
+	size_t		i;
 
-	line = getnextline(fd);
-	while (is_map(line))
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (false);
+	map_line = skip_textures(fd);
+	if (!map_line)
+		return (false);
+	data->mapLines = malloc(sizeof(char*) * nlines + 1);
+	i = 0;
+	printf("save map, fd=%i\n", fd);
+	printf("have starting line\n");
+	while (map_line && i <= nlines)
+	{
+		data->mapLines[i] = ft_strdup(map_line);
+		i++;
+		free(map_line);
+		map_line = get_next_line(fd);
+	}
+	if (map_line)
+		free(map_line);
+	data->mapLines[i] = NULL;
+	close(fd);
+	return (true);
+}
+
+
+bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
+{
+	size_t	nlines;
+
+	nlines = 1;
+	printf("go_through map\n");
+	printf("opened fd\n");
+	while (line && !is_eof(*line))
 	{
 		free(line);
-		nline++;
-		get_next_line(fd);
+		line = get_next_line(fd);
+			nlines++;
+		if (line)
+			printf("calculating mapline:%s", line);
 	}
-	if (trash_after_map(line, fd))
-	{
-		clean_verif_map(line, fd);
-		return (print_error(NULL, "GTM:trash after map"));
-	}
+	close(fd);
+	printf("closed fd\n");
 	if (line)
 		free(line);
-	close(fd);
-	if (!copy_map(path, data, nline))
-		return (print_error(NULL, "GTM:could not copy map"));
+	printf("Found %zu map lines to save\n", nlines);
+	if (!save_map(path, nlines, data) || !data->mapLines || data->mapLines[0] == NULL)
+		print_message("Could not save map\n");
 	else
-		return (true);
-	return (false);
+		printf("Saved %zu map lines\n", nlines);
+	return (true);
 }
 
-bool	parse_map(char *path, int fd, t_game_data *initData)
+bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line)
 {
 	if (fd)
 		printf("zaglushka for save map\n");
-	if (!go_through_map(path, fd, initData))
-		return (print_error(NULL, "Parse map:did not find correcct map to copy"));
-	
-	return (false);
+	if (map_line)
+			printf("map_line before skip:%s", map_line);
+	map_line = skip_empty_lines(fd);
+	if (map_line)
+			printf("mapline after skip:%s", map_line);
+	if (!map_line || is_eof(*map_line))
+		return (print_error(NULL, "Parse map:did not find any map to copy"));
+	if (!go_through_map(path, fd, map_line, initData))
+		return (print_error(NULL, "Parse map:did not find any map to copy"));
+	return (true);
 }

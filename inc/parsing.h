@@ -22,6 +22,14 @@ typedef	struct s_rgb
 	int	blue;
 }		t_rgb;
 
+typedef	struct s_parsed_lines
+{
+	char			*line;
+	int				id;
+
+	struct s_parsed_lines	*next;
+}		t_parsed_lines;
+
 
 typedef struct s_game_data
 {
@@ -34,8 +42,10 @@ typedef struct s_game_data
 	t_rgb	*celling;
 
 	t_lmap	**map;
-} 		t_game_data;
 
+	t_parsed_lines **initLines;
+	char		**mapLines;
+} 		t_game_data;
 
 //verif_map.c
 
@@ -47,7 +57,7 @@ bool	verify_file(char *input);
 
 //parsing_start.c
 void	clean_line(char *line);
-bool	parse_textures(int fd, t_game_data *initData);
+bool	parse_textures(int fd, t_game_data *initData, char **map_line);
 bool	parsing(char *path);
 
 #endif

@@ -18,15 +18,21 @@ int		exit_program(char *text);
 //parsing_utils.c
 bool	token_found(char *search, char *input);
 bool	save_texture(char *type, char *line,  t_game_data *initData);
+bool	is_empty_line(char *line);
+char	*skip_empty_lines(int fd);
 bool	exit_textures( char *line, t_game_data *initData);
 
 //parse_map.c
-bool	parse_map(char *path, int fd, t_game_data *initData);
+bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line);
+
+//parsing_dbg.c
+void	print_parsed_textures(t_parsed_lines *initLines);
+void	print_parsed_map(char **mapLines);
 
 //parse_textures.c
 void	clean_line(char *line);
-int 	search_elements(char *line, char **type, int fd, t_game_data *initData);
-bool	parse_textures(int fd, t_game_data *initData);
+int 	search_elements(char *line,  t_game_data *initData, int pe);
+bool	parse_textures(int fd, t_game_data *initData, char **map_line);
 
 //parsing.c
 bool	parsing(char *path);

@@ -9,6 +9,7 @@ RM = rm -f
 SRC = main.c ./src/parsing/parsing_start.c ./src/parsing/proc_space.c  \
 	./src/parsing/verif_elements.c ./src/parsing/verif_file.c \
 	./utils/drop_message.c ./utils/exit_program.c ./utils/skip_tab_spaces.c \
+	./utils/parsing_dbg.c \
 	./utils/parsing_utils.c ./src/parsing/parse_textures.c ./src/parsing/parse_map.c \
 #./src/parsing/verif_map.c  
 OBJ = $(SRC:.c=.o)
