@@ -30,18 +30,17 @@ void	print_parsed_textures(t_parsed_lines *initLines);
 void	print_parsed_map(char **mapLines);
 
 //parse_textures.c
-void	clean_line(char *line);
-int 	search_elements(char *line,  t_game_data *initData, int pe);
-bool	parse_textures(int fd, t_game_data *initData, char **map_line);
-
-//parsing.c
-bool	parsing(char *path);
+void			clean_line(char *line);
+int				ft_lstsize_pl(t_parsed_lines *lst);
+t_parsed_lines	*ft_lstlast_pl(t_parsed_lines *lst);
+int 			search_elements(char *line,  t_game_data *initData, int pe);
+bool			parse_textures(int fd, t_game_data *initData, char **map_line);
 
 
 //skip_tab_spaces.c
 bool	is_eof(char c);
 bool	is_tab_or_space(char c);
 bool	is_tab_or_space(char c);
-void	skip_tab_spaces(char *line);
+char	*skip_tab_spaces(char *line);
 
 #endif

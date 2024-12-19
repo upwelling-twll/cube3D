@@ -112,7 +112,7 @@ bool	is_empty_line(char *line)
 	if (!line)
 		return (false);
 	len = ft_strlen(line);
-	while (i < len && (line[i] == ' ' || line[i] == '\n'))
+	while (i < len && (line[i] == ' ' || line[i] == '\n' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0')
 		return(true);

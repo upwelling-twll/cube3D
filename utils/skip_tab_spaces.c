@@ -18,18 +18,20 @@ bool	is_tab_or_space(char c)
 
 bool	is_end_of_line(char c)
 {
-	if (c == '\n')
+	if (c == '\0')
 		return (true);
 	else
 		return (false);
 }
 
-void	skip_tab_spaces(char *line)
+char*	skip_tab_spaces(char *line)
 {
-	while (!is_end_of_line(*line))
+	if (!is_end_of_line(*line))
 	{
 		while (is_tab_or_space(*line))
 			line++;
 	}
+	printf("sts:%s", line);
+	return (line);
 }
 

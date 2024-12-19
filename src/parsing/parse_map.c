@@ -70,7 +70,6 @@ bool	save_map(char *path, size_t nlines, t_game_data *data)
 	return (true);
 }
 
-
 bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 {
 	size_t	nlines;

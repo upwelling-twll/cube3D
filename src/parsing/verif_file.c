@@ -11,19 +11,18 @@ bool	verify_file_xpm(char *input)
 	len = ft_strlen(input);
 	if (len > 4 && (input[len - 4] == '.' && input[len - 3] == 'x' \
 			&& input[len - 2] == 'p' && input[len - 1] == 'm'))
-		{
-			mlx = mlx_init();
-			img = mlx_xpm_file_to_image(mlx, input, &size, &size);
-			if (img)
-				return (true);
-			else
-				print_error(input, "File .xpm image reading has failed.");
-		}
+	{
+		mlx = mlx_init();
+		img = mlx_xpm_file_to_image(mlx, input, &size, &size);
+		if (img)
+			return (true);
 		else
-			print_error(input, "File is not .xpm format.");
-		return (false);
+			print_error(input, "File .xpm image reading has failed.");
+	}
+	else
+		print_error(input, "File is not .xpm format.");
+	return (false);
 }
-
 
 bool 	verify_file_cub(char *input)
 {

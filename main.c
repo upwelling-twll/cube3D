@@ -8,9 +8,9 @@ int	main(int argc, char *argv[])
 	{
 		if (!verify_file(argv[1]))
 			return(exit_program("exiting Cube3D"));
-		if (!parsing(argv[1]), &initData)
+		if (!(parsing(argv[1], &initData)))
 			return(exit_program("exiting Cube3D"));
-		if (!validation(initData))
+		if (!validation(&initData))
 			return(exit_program("exiting Cube3D"));
 	}
 	else

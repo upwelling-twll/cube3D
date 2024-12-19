@@ -6,6 +6,8 @@ bool	parsing(char *path, t_game_data **initData)
 	int			fd;
 	char		*map_line;
 
+	if (!path)
+		return (false);
 	*initData = malloc(sizeof(t_game_data));
 	if (!(*initData))
 		return (print_error(NULL, "Parsing:can not create initData"));
