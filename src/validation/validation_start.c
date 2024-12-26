@@ -13,7 +13,6 @@ int	is_valid_elem(t_parsed_lines *pline, t_game_data **idata)
 	char	*etype;
 
 	etype = NULL;
-	printf("\nis_valid_elem\n pline->line:%s$", pline->line);	
 	if (!pline || is_empty_line(pline->line))
 		return (0);
 	cpline = skip_tab_spaces(pline->line);
@@ -33,7 +32,6 @@ int	is_valid_elem(t_parsed_lines *pline, t_game_data **idata)
 	}
 	else
 		return (0);
-	printf("cpline:%s$", cpline);
 	return (1);
 }
 
@@ -48,11 +46,9 @@ bool	valid_elements(t_game_data **idata)
 	line = *(*idata)->initLines;
 	while (line)
 	{
-		printf("	Validation i=%i : checking line%s", i, line->line);
 		i += is_valid_elem(line, idata);
 		line = line->next;
 	}
-	printf("Checked all saved lines. Found %i valid elements\n", i);
 	if (i != nelem)
 		return (false);
 	return (true);

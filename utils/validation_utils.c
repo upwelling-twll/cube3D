@@ -38,7 +38,6 @@ bool	save_txt_data(t_txtr *elem, char *path, char *type)
 	if (!cptype)
 		return (false);
 	elem->type = cptype;
-	printf("for type %s saved path: $%s$\n",elem->type, elem->path);
 	return (true);
 }
 

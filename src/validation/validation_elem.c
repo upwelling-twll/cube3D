@@ -22,7 +22,6 @@ char	*remove_back_spaces(char *input)
 		len++;
 	}
 	path[len] = '\0';
-	printf("path after remove back spaces:$%s$\n", path);
 	return (path);
 }
 
@@ -30,7 +29,7 @@ char	*remove_back_spaces(char *input)
 bool	correct_path(char *line)
 {
 	char	*cpline;
-	printf("NO/SO/WE/EA: checking path:$%s$\n", line);
+
 	if (!line || is_eof(*line) || is_empty_line(line))
 		return (false);
 	cpline = remove_back_spaces(line);
@@ -52,31 +51,24 @@ bool	correct_colours(char *cpline)
 	i = 0;
 	line = cpline;
 	colour = -1;
-	printf(" checking clorrect RGB colours\n");
 	if (!line || is_eof(*line) || is_empty_line(line))
 		return (false);
 	while (i < 3 && *line)
 	{
 		colour = ft_atoi(line); //check is digit
-		printf("colour (from ft_atoi):%i\n", ft_atoi(line));
 		if (colour < 0 || colour > 255)
 			return (false);
 		i++;
 		line = skip_digits(line);
-		printf("after skip digit:%s$\n", line);
 		if (i == 3)
 			break;
 		line = skip_tab_spaces(line);
 		if (line && is_comma(*line))
 			line = skip_comma(line);
 		else
-		{
-			printf("no comma after number. returning false\n");
 			return (false);
-		}
 		line = skip_tab_spaces(line);
 	}
-	printf("Found %i numbers for colours\n", i);
 	if (i == 3 && is_empty_line(line))
 		return (true);
 	return (false);
@@ -154,10 +146,7 @@ bool	is_unique(t_game_data **d, char *t)
 	else if (!ft_strncmp(t, "C", 2) && (*d)->celling.status == true)
 		return (false);
 	else
-	{
-		printf("token %s is unique\n", t);
 		return (true);
-	}
 }
 
 
@@ -185,6 +174,5 @@ bool	is_etoken(char *cpline, char **etype)
 		return (false);
 	if (!(*etype))
 		return (false);
-	printf("is_etoken fond token type:%s$\n", *etype);
 	return (true);
 }
