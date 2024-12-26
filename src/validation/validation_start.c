@@ -1,4 +1,4 @@
-#include "../../inc/utils.h"
+#include "../../inc/validation.h"
 
 bool	valid_map(t_game_data **idata)
 {
@@ -16,16 +16,21 @@ int	is_valid_elem(t_parsed_lines *pline, t_game_data **idata)
 	printf("\nis_valid_elem\n pline->line:%s$", pline->line);	
 	if (!pline || is_empty_line(pline->line))
 		return (0);
-	printf("pline->line:%s$", pline->line);
 	cpline = skip_tab_spaces(pline->line);
-	if (!(is_etoken(&cpline, &etype)) || !(is_unique(idata, etype)))
+	if (!(is_etoken(cpline, &etype)) || !(is_unique(idata, etype)))
 		return (0);
 	cpline += ft_strlen(etype);
 	cpline = skip_tab_spaces(cpline);
-	if (ft_strlen(etype) == 2 && (correct_path(cpline)))
-		save_txtr(idata, cpline);
-	else if (ft_strlen(etype) == 1 && (correct_colour(cpline)))
-		save_rgb(idata, cpline);
+	if (ft_strlen(etype) == 2 && (correct_path(cpline))) //for WE, EA, SO,NO
+	{
+		if (!save_txtr(idata, cpline, etype))
+			return (0);
+	}
+	else if (ft_strlen(etype) == 1 && (correct_colours(cpline))) //for F and C
+	{
+		if (!save_rgb(idata, cpline, etype))
+			return (false);	
+	}
 	else
 		return (0);
 	printf("cpline:%s$", cpline);
@@ -43,9 +48,11 @@ bool	valid_elements(t_game_data **idata)
 	line = *(*idata)->initLines;
 	while (line)
 	{
+		printf("	Validation i=%i : checking line%s", i, line->line);
 		i += is_valid_elem(line, idata);
 		line = line->next;
 	}
+	printf("Checked all saved lines. Found %i valid elements\n", i);
 	if (i != nelem)
 		return (false);
 	return (true);

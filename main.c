@@ -1,10 +1,11 @@
-#include "./inc/utils.h"
+#include "./inc/validation.h"
 
 int	main(int argc, char *argv[])
 {
 	t_game_data	*initData;
 
-	if (argc == 2)
+	// argv[1] = "file.cub";
+	if (argc == 2) //replace to argc == 2
 	{
 		if (!verify_file(argv[1]))
 			return(exit_program("exiting Cube3D"));

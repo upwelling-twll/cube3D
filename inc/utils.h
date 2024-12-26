@@ -8,6 +8,14 @@
 #include "./parsing.h"
 # include "../mlx/mlx.h"
 
+//validation_utils.c
+char	*is_texture(char *line, char **types);
+char	*is_rgb(char *line, char **types);
+int	is_etoken_len(char *line);
+bool	is_comma(char c);
+char*	skip_comma(char *line);
+char*	skip_digits(char *line);
+bool	save_txt_data(t_txtr *elem, char *path, char *type);
 //drop_message.c
 void	print_message(char *text);
 int		print_error(char *data, char *text);
@@ -36,11 +44,11 @@ t_parsed_lines	*ft_lstlast_pl(t_parsed_lines *lst);
 int 			search_elements(char *line,  t_game_data *initData, int pe);
 bool			parse_textures(int fd, t_game_data *initData, char **map_line);
 
-
 //skip_tab_spaces.c
 bool	is_eof(char c);
 bool	is_tab_or_space(char c);
-bool	is_tab_or_space(char c);
+bool	is_end_of_line(char c);
+char*	skip_non_spaces(char *line);
 char	*skip_tab_spaces(char *line);
 
 #endif

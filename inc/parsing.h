@@ -14,7 +14,13 @@ typedef struct s_lmap
 	bool	space;
 
 }		t_lmap;
+typedef	struct s_parsed_lines
+{
+	char					*line;
+	int						id;
 
+	struct s_parsed_lines	*next;
+}		t_parsed_lines;
 typedef	struct s_rgb
 {
 	int		red;
@@ -23,14 +29,6 @@ typedef	struct s_rgb
 
 	bool	status;
 }		t_rgb;
-
-typedef	struct s_parsed_lines
-{
-	char					*line;
-	int						id;
-
-	struct s_parsed_lines	*next;
-}		t_parsed_lines;
 
 typedef struct s_txtr
 {
@@ -57,9 +55,6 @@ typedef struct s_game_data
 } 		t_game_data;
 
 //verif_map.c
-
-//validation_start.c
-bool	validation(t_game_data **idata);
 
 //verif_elements.c
 bool	good_file(char *file_path);
