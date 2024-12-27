@@ -13,6 +13,7 @@ SRC = main.c ./src/parsing/parsing_start.c ./src/parsing/proc_space.c  \
 	./utils/parsing_utils.c ./src/parsing/parse_textures.c ./src/parsing/parse_map.c  \
 	./utils/validation_utils.c	\
 	./src/validation/validation_start.c	./src/validation/validation_elem.c	 \
+	./src/validation/validation_map.c	\
 
 #./src/parsing/verif_map.c  
 OBJ = $(SRC:.c=.o)

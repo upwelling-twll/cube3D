@@ -2,7 +2,7 @@
 
 bool	valid_map(t_game_data **idata)
 {
-	if (*idata)
+	if (*idata && is_valid_map(idata, (*idata)->mapLines))
 		return (true);
 	return (false);
 }
