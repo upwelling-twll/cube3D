@@ -8,7 +8,12 @@
 #include "./parsing.h"
 # include "../mlx/mlx.h"
 
-//validation_utils.c
+//validation_map_utils.c
+char	**remove_last_nlsp(t_game_data **idata);
+int		get_array_size(char **array);
+void	clean_map(char ***map);
+
+//validation_elem_utils.c
 char	*is_texture(char *line, char **types);
 char	*is_rgb(char *line, char **types);
 int	is_etoken_len(char *line);

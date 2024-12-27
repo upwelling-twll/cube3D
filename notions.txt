@@ -1,4 +1,6 @@
-/*15 december. must change file parsing logic 
+/*
+27 december. found DFS algorithm for map validation
+(done)15 december. must change file parsing logic 
 to make map identification easy:
 1. skip empty lines
 2. copy whatever i have 6 times. skiping all \n and spaces
