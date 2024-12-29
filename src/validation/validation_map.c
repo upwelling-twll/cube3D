@@ -51,10 +51,22 @@ bool	is_wall(char *line)
 	return (false);
 }
 
-bool	replace_sp_to_x(t_game_data **idata)
+bool	replace_sp_to_x(t_game_data **idata, int rows)
 {
-	if (idata)
-		printf("function replace_sp_to_x:STUB\n");
+	char	**nmap;
+	char	**map;
+	int		*rows_len;
+	int		max_len;
+
+	max_len = 0;
+	map = (*idata)->mapLines;
+	if (!idata || !(*idata)->mapLines)
+		return (false);
+	max_len = get_maxlen(map, &rows_len, rows);
+	if (!max_len)
+		return (false);
+	nmap = replace_spaces(map, rows_len, max_len, rows);
+	printf("max len = %i\n", max_len);
 	return (true);
 }
 
@@ -80,17 +92,15 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	if (!is_wall(lmap[0]))
 		return (print_error(lmap[0], "<- first map line is NOT wall"));
 	printf("Validation: first map line is a wall\n");
-
 	nmap= remove_last_nlsp(idata);
 	if (!nmap)
 		return (print_error(lmap[0], "map error: after removing last nlsp"));
-	
 	print_validated_map((*idata)->mapLines);
 	lnum = get_array_size((*idata)->mapLines);
-
 	if (!is_wall(nmap[lnum]))
 		return (print_error(nmap[lnum], "<- last map line is NOT wall"));
-	if (!(replace_sp_to_x(idata)))
+	
+	if (!(replace_sp_to_x(idata, lnum)))
 		return (print_error(NULL, "replacing 'spaces' to 'x' error"));
 	nmap = dfs_check_walls((*idata)->mapLines, 'x', 'v');
 	if (!nmap)

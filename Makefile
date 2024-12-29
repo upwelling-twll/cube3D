@@ -11,7 +11,7 @@ SRC = main.c ./src/parsing/parsing_start.c ./src/parsing/proc_space.c  \
 	./utils/drop_message.c ./utils/exit_program.c ./utils/skip_tab_spaces.c \
 	./utils/parsing_dbg.c ./utils/validation_dbg.c\
 	./utils/parsing_utils.c ./src/parsing/parse_textures.c ./src/parsing/parse_map.c  \
-	./utils/validation_elem_utils.c	./utils/validation_map_utils.c	\
+	./utils/validation_elem_utils.c	./utils/validation_map_utils.c	./utils/validation_map_edit.c\
 	./src/validation/validation_start.c	./src/validation/validation_elem.c	 \
 	./src/validation/validation_map.c ./src/validation/validation_dfs.c\
 

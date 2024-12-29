@@ -15,7 +15,7 @@ char	**dfs_check_walls(char **m, char p, char r);
 //validation_map.c
 bool	has_one_hero(char **lmap);
 bool	is_wall(char *line);
-bool	replace_sp_to_x(t_game_data **idata);
+bool	replace_sp_to_x(t_game_data **idata, int rows);
 bool	compare_maps(char **spmap, char **vmap);
 bool	is_valid_map(t_game_data **idata, char **lmap);
 

@@ -8,6 +8,10 @@
 #include "./parsing.h"
 # include "../mlx/mlx.h"
 
+//validation_map_edit.c
+char	**replace_spaces(char **map, int *rows_len, int max, int rows);
+int	 get_maxlen(char **map, int **rows_len, int rows);
+
 //validation_map_utils.c
 char	**remove_last_nlsp(t_game_data **idata);
 bool	end_of_map(char **map, int i);
