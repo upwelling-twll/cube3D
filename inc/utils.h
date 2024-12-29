@@ -10,8 +10,10 @@
 
 //validation_map_utils.c
 char	**remove_last_nlsp(t_game_data **idata);
+bool	end_of_map(char **map, int i);
 int		get_array_size(char **array);
-void	clean_map(char ***map);
+void	clean_map(char **map);
+bool	is_valid_line(char *line);
 bool	is_hero(char c);
 
 //validation_elem_utils.c
@@ -38,6 +40,9 @@ bool	exit_textures( char *line, t_game_data *initData);
 
 //parse_map.c
 bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line);
+
+//validation_dbg.c
+void	print_validated_map(char **mapLines);
 
 //parsing_dbg.c
 void	print_parsed_textures(t_parsed_lines *initLines);
