@@ -20,3 +20,11 @@ void	clean_map(char ***map)
 		printf("function clean_map:STUB\n");
 	return ;
 }
+
+bool	is_hero(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (true);
+	else
+		return (false);
+}

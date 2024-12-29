@@ -9,6 +9,7 @@
 # include "../mlx/mlx.h"
 
 //validation_dfs.c
+char	**dfs_check_walls(char **m, char p, char r);
 
 
 //validation_map.c

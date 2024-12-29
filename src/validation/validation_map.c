@@ -2,9 +2,29 @@
 
 bool	has_one_hero(char **lmap)
 {
-	if (lmap)
-		printf("function has_one_character:STUB\n");
-	return (true);
+	int	n;
+	int	i;
+	int	j;
+
+	n = 0;
+	i = 0;
+	j = 0;
+	if (!lmap)
+		return (false);	
+	while (lmap[i])
+	{
+		j = 0;
+		while (lmap[i][j])
+		{
+			if (is_hero(lmap[i][j]))
+				n++;
+			j++;
+		}
+		i++;
+	}
+	if (n == 1)
+		return (true);
+	return (false);
 }
 
 bool	is_wall(char *line)
@@ -25,6 +45,8 @@ bool	compare_maps(char **spmap, char **vmap)
 {
 	if (spmap)
 		printf("function compare_maps:STUB\n");
+	if (!vmap)
+		return (true);
 	return (true);
 }
 
@@ -35,6 +57,7 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 
 	if (!(has_one_hero(lmap)))
 		return (print_error(NULL, "Map validation: character issue"));
+	printf("Validation: one and only hero exists\n");
 	if (!is_wall(lmap[0]))
 		return (print_error(lmap[0], "<- first map line is NOT wall"));
 	(*idata)->mapLines = remove_last_nlsp(idata);

@@ -14,6 +14,3 @@ C 225,9,30
 101001
 1100N1 
 111111
-struct->string =ft_strdup( arr[2])
-free[arr]
-pritnf(atruct->atring)

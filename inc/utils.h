@@ -12,6 +12,7 @@
 char	**remove_last_nlsp(t_game_data **idata);
 int		get_array_size(char **array);
 void	clean_map(char ***map);
+bool	is_hero(char c);
 
 //validation_elem_utils.c
 char	*is_texture(char *line, char **types);
