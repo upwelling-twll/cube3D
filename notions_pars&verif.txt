@@ -16,7 +16,12 @@ to make map identification easy:
 10. replace all the spaces by 'x'(done)
 january 3rd:
 
- working on:  using DFS algorithm: 
+11. check for map: for each 0 - if there is x close to it. if yes -> map error, exit program.
+12. for character: check if there is x close to it. if yes -> map error, exit program.
+13. map is validated.
+ 
+ /* old strategy for checking enclosed map *\
+  using DFS algorithm: 
 11. every symbol there the player could step is replaced by v
 12. compare first map with the result of dfs: if any x is replaced by v - map error, exit
 
