@@ -7,15 +7,13 @@ to make map identification easy:
 3. skip \n and spaces
 4. copy all following lines, assuming it is a map
 5. sent it to map verification
-
 6. there is N/S/E/W/ letter in the map. it is only one
 7. if 1st line is not wall - map error, exit program
 8. remove all spaces and \n in the end
 9. if last line is not wall - map error, exit program
-
 10. replace all the spaces by 'x'(done)
-january 3rd:
 
+january 3rd:
 11. check for map: for each 0 - if there is x close to it. if yes -> map error, exit program.
 12. for character: check if there is x close to it. if yes -> map error, exit program.
 13. map is validated.

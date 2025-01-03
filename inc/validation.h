@@ -8,8 +8,9 @@
 #include "./utils.h"
 # include "../mlx/mlx.h"
 
-//validation_dfs.c
-char	**dfs_check_walls(char **m, char p, char r);
+//validation_walls.c
+bool	has_internal_walls(char **map);
+bool	check_walls(char **map, char p, char r);
 
 
 //validation_map.c

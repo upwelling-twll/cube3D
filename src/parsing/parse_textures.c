@@ -68,8 +68,8 @@ int search_elements(char *line, t_game_data *initData, int pe)
 		(ft_lstlast_pl((*initData->initLines)))->next = new;
 		if (!((ft_lstlast_pl((*initData->initLines))->line = ft_strdup(line))))
 		{
-				// if (initData->initLines)
-				// 	free(initData->initLines); //clean the list, clean initLines
+				if (initData->initLines)
+					clean_elem_lines(initData->initLines);
 				return (0);
 		}
 		else

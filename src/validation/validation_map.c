@@ -41,14 +41,14 @@ bool	is_wall(char *line)
 		if (line[i] == '1')
 			wall++;
 		if (line[i] == '\n' && wall == 0)
-			return (false);
+			return (print_message("last map line is NOT wall"),false);
 		if (line [i] != '1' && line[i] != ' ' && line[i] != '\n')
-			return (false);
+			return (print_message("last map line is NOT wall"),false);
 		i++;
 	}
 	if (wall > 0)
 		return (true);
-	return (false);
+	return (print_message("last map line is NOT wall"), false);
 }
 
 bool	replace_sp_to_x(t_game_data **idata, int rows)
@@ -102,16 +102,14 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 		return (print_error(lmap[0], "map error: after removing last nlsp"));
 	print_validation_map((*idata)->mapLines, "Removed exptra nlsp");
 	lnum = get_array_size((*idata)->mapLines);
-	if (!is_wall(nmap[lnum]))
-		return (print_error(nmap[lnum], "<- last map line is NOT wall"));
-	
+	if (!is_wall(nmap[lnum]) || !has_internal_walls(nmap))
+		return (print_error(nmap[lnum], "walls check failed"));
 	if (!(replace_sp_to_x(idata, lnum)))
 		return (print_error(NULL, "replacing 'spaces' to 'x' error"));
-	nmap = dfs_check_walls((*idata)->mapLines, 'x', 'v');
-	if (!nmap)
-		return (clean_map(nmap), print_error(NULL, "dfs error"));
-	if (!compare_maps((*idata)->mapLines, nmap))
-		return (clean_map(nmap), print_error(NULL, "compare maps error"));
+	if  (!check_walls((*idata)->mapLines, 'x', 'v'))
+		return (clean_map(nmap), print_error(NULL, "Spaces check failed"));
+	// if (!compare_maps((*idata)->mapLines, nmap))
+	// 	return (clean_map(nmap), print_error(NULL, "compare maps error"));
 	return (print_message("Validation: is_valid_map OK"), true);
 }	
 
