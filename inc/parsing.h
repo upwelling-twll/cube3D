@@ -16,11 +16,12 @@
 // }		t_lmap;
 typedef	struct s_parsed_lines
 {
-	char					*line;
-	int						id;
+	char	*line;
+	int		id;
 
 	struct s_parsed_lines	*next;
 }		t_parsed_lines;
+
 typedef	struct s_rgb
 {
 	int		red;

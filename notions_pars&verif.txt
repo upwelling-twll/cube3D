@@ -13,8 +13,10 @@ to make map identification easy:
 8. remove all spaces and \n in the end
 9. if last line is not wall - map error, exit program
 
-december 29: started this-> 10. replace all the spaces by 'x'
-   using DFS algorithm: 
+10. replace all the spaces by 'x'(done)
+january 3rd:
+
+ working on:  using DFS algorithm: 
 11. every symbol there the player could step is replaced by v
 12. compare first map with the result of dfs: if any x is replaced by v - map error, exit
 

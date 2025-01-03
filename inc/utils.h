@@ -9,7 +9,7 @@
 # include "../mlx/mlx.h"
 
 //validation_map_edit.c
-char	**replace_spaces(char **map, int *rows_len, int max, int rows);
+char	**replace_spaces(char **map, int max, int rows);
 int	 get_maxlen(char **map, int **rows_len, int rows);
 
 //validation_map_utils.c
@@ -33,6 +33,7 @@ void	print_message(char *text);
 int		print_error(char *data, char *text);
 
 //exit_program.c
+void	clean_elem_lines(t_parsed_lines **initLines);
 int		exit_program(char *text);
 
 //parsing_utils.c
@@ -46,7 +47,7 @@ bool	exit_textures( char *line, t_game_data *initData);
 bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line);
 
 //validation_dbg.c
-void	print_validated_map(char **mapLines);
+void	print_validation_map(char **mapLines, char *txt);
 
 //parsing_dbg.c
 void	print_parsed_textures(t_parsed_lines *initLines);

@@ -1,26 +1,5 @@
 #include "../../inc/utils.h"
 
-// bool	is_map(char *line)
-// {
-// 	char	*cpline;
-
-// 	cpline = line;
-// 	skip_tab_spaces(cpline);
-// 	while (!is_eof(*cpline) && !is_end_of_line(*cpline) && !is_tab_or_space(*line))
-// 	{
-// 		if (is_wall(line))
-// 		{
-// 			printf("wall map line found:\n%s\n", line);
-// 			return (true);
-// 		}
-// 		else if (is_middle_line(cpline))
-// 		{
-// 			printf("middle map line found:\n%s\n", line);
-// 			return (true);
-// 		}
-// 	}
-// }
-
 char	*skip_textures(int fd)
 {
 	char	*line;

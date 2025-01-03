@@ -59,7 +59,6 @@ int search_elements(char *line, t_game_data *initData, int pe)
 	}
 	else
 	{
-		// printf("initLines not NULL\n");
 		t_parsed_lines *new;
 
 		new = malloc(sizeof(t_parsed_lines));

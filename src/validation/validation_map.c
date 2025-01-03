@@ -65,8 +65,13 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	max_len = get_maxlen(map, &rows_len, rows);
 	if (!max_len)
 		return (false);
-	nmap = replace_spaces(map, rows_len, max_len, rows);
 	printf("max len = %i\n", max_len);
+	nmap = replace_spaces(map, max_len, rows);
+	if (!nmap)
+		return (false);
+	print_validation_map(nmap, "Replaced sp to 'x'");
+	clean_map((*idata)->mapLines);
+	(*idata)->mapLines = nmap;
 	return (true);
 }
 
@@ -95,7 +100,7 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	nmap= remove_last_nlsp(idata);
 	if (!nmap)
 		return (print_error(lmap[0], "map error: after removing last nlsp"));
-	print_validated_map((*idata)->mapLines);
+	print_validation_map((*idata)->mapLines, "Removed exptra nlsp");
 	lnum = get_array_size((*idata)->mapLines);
 	if (!is_wall(nmap[lnum]))
 		return (print_error(nmap[lnum], "<- last map line is NOT wall"));
