@@ -92,22 +92,22 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	nmap = NULL;
 	lnum = 0;
 	if (!(has_one_hero(lmap)))
-		return (print_error(NULL, "Map validation: character issue"));
+		return (print_message("Map validation: character issue"), false);
 	printf("Validation: one and only hero exists\n");
 	if (!is_wall(lmap[0]))
-		return (print_error(lmap[0], "<- first map line is NOT wall"));
+		return (print_message("first map line is NOT wall"), false);
 	printf("Validation: first map line is a wall\n");
 	nmap= remove_last_nlsp(idata);
 	if (!nmap)
-		return (print_error(lmap[0], "map error: after removing last nlsp"));
+		return (print_message("map error: after removing last nlsp"), false);
 	print_validation_map((*idata)->mapLines, "Removed exptra nlsp");
 	lnum = get_array_size((*idata)->mapLines);
-	if (!is_wall(nmap[lnum]) || !has_internal_walls(nmap))
-		return (print_error(nmap[lnum], "walls check failed"));
+	if (!is_wall(nmap[lnum]) ) // || !has_internal_walls(nmap)
+		return (print_message("walls check failed"), false);
 	if (!(replace_sp_to_x(idata, lnum)))
-		return (print_error(NULL, "replacing 'spaces' to 'x' error"));
+		return (print_message("replacing 'spaces' to 'x' error"), false);
 	if  (!check_walls((*idata)->mapLines, 'x', 'v'))
-		return (clean_map(nmap), print_error(NULL, "Spaces check failed"));
+		return (print_message("Spaces check failed"), false);
 	// if (!compare_maps((*idata)->mapLines, nmap))
 	// 	return (clean_map(nmap), print_error(NULL, "compare maps error"));
 	return (print_message("Validation: is_valid_map OK"), true);

@@ -3,7 +3,7 @@
 char	get_last_nonspace(char *line)
 {
 	//todo;
-	if (line)
+	if (!line)
 		return (line[0]);
 	return ('1');
 }
@@ -36,9 +36,19 @@ bool	has_internal_walls(char **map)
 bool	has_space_around(char **map, int x, int y)
 {
 	//todo;
-	if (map && x && y)
-		return (true);
-	return false;
+	printf("has_space_around check\n");
+	if (map[y][x])
+	{
+		if (map[y][x+1] == 'x')
+			return (true);
+		else if (map[y][x-1] == 'x')
+			return (true);
+		else if (map[y+1][x] == 'x')
+			return (true);
+		else if (map[y-1][x] == 'x')
+			return (true);
+	}
+	return (false);
 }
 
 bool	check_walls(char **map, char p, char r)
@@ -59,11 +69,14 @@ bool	check_walls(char **map, char p, char r)
 			if (map[i][j] == '0')
 			{
 				if (has_space_around(map, i, j))
+				{
+					printf("check walls return false\n");
 					return (false);
-				j++;
+				}
 			}
-			i++;
+			j++;
 		}
+		i++;
 	}
 	return (true);	
 }

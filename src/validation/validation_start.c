@@ -2,9 +2,13 @@
 
 bool	valid_map(t_game_data **idata)
 {
-	if (*idata && is_valid_map(idata, (*idata)->mapLines))
-		return (true);
-	return (false);
+	if (!idata || !is_valid_map(idata, (*idata)->mapLines))
+	{
+		printf("valid_map return false\n");
+		return (false);
+	}
+	printf("valid_map return true\n");
+	return (true);
 }
 
 int	is_valid_elem(t_parsed_lines *pline, t_game_data **idata)
