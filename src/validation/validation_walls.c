@@ -33,7 +33,7 @@ bool	has_internal_walls(char **map)
 	return (true);
 }
 
-bool	has_space_around(char **map, int x, int y)
+bool	has_space_around(char **map, int y, int x)
 {
 	//todo;
 	printf("has_space_around check\n");
@@ -51,7 +51,18 @@ bool	has_space_around(char **map, int x, int y)
 	return (false);
 }
 
-bool	check_walls(char **map, char p, char r)
+bool	on_eage(int y, int x, int height, int widht)
+{
+
+	if (y == 0 || y >= height)
+		return (print_message("0 on eage"), true);
+	else if (x == 0 || x >= widht)
+		return (print_message("0 on eage"), true);
+	else
+		return (false);
+}
+
+bool	check_walls(char **map, int height, int widht)
 {
 	int	i;
 	int	j;
@@ -59,18 +70,17 @@ bool	check_walls(char **map, char p, char r)
 	i = 0;
 	j = 0;
 	//todo
-	if (map && p && r)
-		printf("function dfs_check_walls:STUB\n");
+	printf("function dfs_check_walls:STUB\n");
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j] != '\0')
 		{
-			if (map[i][j] == '0')
+			if (map[i][j] == '0' || is_hero(map[i][j]))
 			{
-				if (has_space_around(map, i, j))
+				if (on_eage(i, j, height, widht) || has_space_around(map, i, j))
 				{
-					printf("check walls return false\n");
+					printf("check walls return false, line:%s\n", map[i]);
 					return (false);
 				}
 			}

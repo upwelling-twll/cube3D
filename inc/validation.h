@@ -10,7 +10,7 @@
 
 //validation_walls.c
 bool	has_internal_walls(char **map);
-bool	check_walls(char **map, char p, char r);
+bool	check_walls(char **map, int height, int widht);
 
 
 //validation_map.c

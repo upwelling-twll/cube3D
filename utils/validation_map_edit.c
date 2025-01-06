@@ -11,7 +11,7 @@ char	**replace_spaces(char **map, int max, int rows)
 	nmap = malloc(sizeof(char *)* rows + 1);
 	if (!nmap)
 		return (NULL);
-	while (i < rows)
+	while (i <= rows)
 	{
 		j = 0;
 		nmap[i] = malloc(sizeof(char) * max + 1);

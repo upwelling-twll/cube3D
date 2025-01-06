@@ -10,7 +10,7 @@
 
 //validation_map_edit.c
 char	**replace_spaces(char **map, int max, int rows);
-int	 get_maxlen(char **map, int **rows_len, int rows);
+int	 	get_maxlen(char **map, int **rows_len, int rows);
 
 //validation_map_utils.c
 char	**remove_last_nlsp(t_game_data **idata);
@@ -23,7 +23,7 @@ bool	is_hero(char c);
 //validation_elem_utils.c
 char	*is_texture(char *line, char **types);
 char	*is_rgb(char *line, char **types);
-int	is_etoken_len(char *line);
+int		is_etoken_len(char *line);
 bool	is_comma(char c);
 char*	skip_comma(char *line);
 char*	skip_digits(char *line);
@@ -47,7 +47,7 @@ bool	exit_textures( char *line, t_game_data *initData);
 bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line);
 
 //validation_dbg.c
-void	print_validation_map(char **mapLines, char *txt);
+void	print_validation_map(char **mapLines, char *map_name);
 
 //parsing_dbg.c
 void	print_parsed_textures(t_parsed_lines *initLines);

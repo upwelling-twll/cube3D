@@ -1,11 +1,11 @@
 #include "../inc/utils.h"
 
-void	print_validation_map(char **mapLines, char *txt)
+void	print_validation_map(char **mapLines, char *map_name)
 {
 	int	i;
 
 	i = 0;
-	printf("\n		~%s map~	 \n", txt);
+	printf("\n		~%s map~	 \n", map_name);
 	if (!mapLines)
 	{
 		printf("	*** Empty map ***\n");

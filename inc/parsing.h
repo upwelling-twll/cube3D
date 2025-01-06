@@ -53,6 +53,8 @@ typedef struct s_game_data
 
 	t_parsed_lines **initLines;
 	char			**mapLines;
+	int				map_height;
+	int				map_widht;
 } 		t_game_data;
 
 //verif_map.c

@@ -66,6 +66,8 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	if (!max_len)
 		return (false);
 	printf("max len = %i\n", max_len);
+	(*idata)->map_height = rows;
+	(*idata)->map_widht = max_len;
 	nmap = replace_spaces(map, max_len, rows);
 	if (!nmap)
 		return (false);
@@ -106,7 +108,7 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 		return (print_message("walls check failed"), false);
 	if (!(replace_sp_to_x(idata, lnum)))
 		return (print_message("replacing 'spaces' to 'x' error"), false);
-	if  (!check_walls((*idata)->mapLines, 'x', 'v'))
+	if  (!check_walls((*idata)->mapLines, (*idata)->map_height, (*idata)->map_widht))
 		return (print_message("Spaces check failed"), false);
 	// if (!compare_maps((*idata)->mapLines, nmap))
 	// 	return (clean_map(nmap), print_error(NULL, "compare maps error"));
