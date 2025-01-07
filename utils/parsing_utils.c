@@ -129,7 +129,7 @@ char	*skip_empty_lines(int fd)
 	{
 		while (is_empty_line(line) == true)
 		{
-			printf("had empty line:%s$\n", line);
+			// printf("had empty line:%s$\n", line);
 			if (line)
 				free(line);
 			line = get_next_line(fd);
@@ -143,8 +143,7 @@ char	*skip_empty_lines(int fd)
 bool	exit_textures(char *line, t_game_data *initData)
 {
 	clean_initData(initData);
-	print_error("parse_textures: found token for line:%s. Error\
-	 saving token.", line);
+	// print_error("parse_textures: found token for line:%s. Error saving token.", line);
 	if (line)
 		free(line);
 	return (false);

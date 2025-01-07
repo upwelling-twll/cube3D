@@ -43,12 +43,14 @@ bool	end_of_map(char **map, int i)
 void	clean_map(char **map)
 {
 	int	i;
-
+	printf("clean map called\n");
 	i = 0;
-	if (!map || !(map[0]))
+	if (!map || !map[0])
 		return ;
+	// printf("start clean\n");
 	while(map[i])
 	{
+		// printf("clean line:%s", map[i]);
 		free(map[i]);
 		i++;
 	}

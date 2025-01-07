@@ -9,7 +9,7 @@
 # include "../mlx/mlx.h"
 
 //validation_walls.c
-bool	has_internal_walls(char **map);
+// bool	has_internal_walls(char **map);
 bool	check_walls(char **map, int height, int widht);
 
 

@@ -88,14 +88,12 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 
 	minimum_elements = 6;
 	parsed_elements = 0;
-	// printf("init data\n");
 	initData->initLines = (t_parsed_lines**)malloc(sizeof(t_parsed_lines*));
 	*(initData->initLines) = (t_parsed_lines*)malloc(sizeof(t_parsed_lines));
 	(*initData->initLines)->next = NULL;
 	(*initData->initLines)->id = 1;
 	head = *initData->initLines;
 	line = skip_empty_lines(fd);
-	printf("start parse text\n");
 	while (line && !is_eof(*line) && parsed_elements < minimum_elements)
 	{
 		parsed_elements += search_elements(line, initData, parsed_elements);
@@ -104,8 +102,7 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 		line = skip_empty_lines(fd);
 		*(initData->initLines) = head;
 	}
-	// printf("hello\n");
-	printf("end parse textures, lst size=%i\n", ft_lstsize_pl(head));
+	// printf("end parse textures, lst size=%i\n", ft_lstsize_pl(head));
 	if (parsed_elements < minimum_elements || ft_lstsize_pl(head) < 6)
 	{
 		print_error("Parsing intit info", "Do not have 6 lines");

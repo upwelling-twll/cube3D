@@ -33,8 +33,8 @@ bool	save_map(char *path, size_t nlines, t_game_data *data)
 		return (false);
 	data->mapLines = malloc(sizeof(char*) * nlines + 1);
 	i = 0;
-	printf("save map, fd=%i\n", fd);
-	printf("have starting line\n");
+	// printf("save map, fd=%i\n", fd);
+	// printf("have starting line\n");
 	while (map_line && i <= nlines)
 	{
 		data->mapLines[i] = ft_strdup(map_line);
@@ -54,21 +54,18 @@ bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 	size_t	nlines;
 
 	nlines = 1;
-	printf("go_through map\n");
-	printf("opened fd\n");
+	// printf("go_through map\n");
+	// printf("opened fd\n");
 	while (line && !is_eof(*line))
 	{
 		free(line);
 		line = get_next_line(fd);
 			nlines++;
-		if (line)
-			printf("calculating mapline:%s", line);
 	}
 	close(fd);
-	printf("closed fd\n");
 	if (line)
 		free(line);
-	printf("Found %zu map lines to save\n", nlines);
+	// printf("Found %zu map lines to save\n", nlines);
 	if (!save_map(path, nlines, data) || !data->mapLines || data->mapLines[0] == NULL)
 		print_message("Could not save map\n");
 	else
@@ -78,13 +75,7 @@ bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 
 bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line)
 {
-	if (fd)
-		printf("zaglushka for save map\n");
-	if (map_line)
-			printf("map_line before skip:%s", map_line);
 	map_line = skip_empty_lines(fd);
-	if (map_line)
-			printf("mapline after skip:%s", map_line);
 	if (!map_line || is_eof(*map_line))
 		return (print_error(NULL, "Parse map:did not find any map to copy"));
 	if (!go_through_map(path, fd, map_line, initData))

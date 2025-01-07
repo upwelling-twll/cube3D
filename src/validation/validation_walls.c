@@ -8,35 +8,10 @@ char	get_last_nonspace(char *line)
 	return ('1');
 }
 
-/// @brief check line starts and ends with 1
-/// @param map 
-/// @return true if line has walls, otherwise - false
-bool	has_internal_walls(char **map)
-{
-	int		i;
-	char	last_nonspace;
-	char	wall;
-	char	**cpmap;
-
-	i = 0;
-	cpmap = map;
-	while (map[i])
-	{
-		wall = skip_tab_spaces(cpmap[i])[0];
-		if (wall != '1')
-			return (false);
-		last_nonspace = get_last_nonspace(map[i]);
-		if (last_nonspace != '1')
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
 bool	has_space_around(char **map, int y, int x)
 {
 	//todo;
-	printf("has_space_around check\n");
+	// printf("has_space_around check\n");
 	if (map[y][x])
 	{
 		if (map[y][x+1] == 'x')
@@ -53,7 +28,7 @@ bool	has_space_around(char **map, int y, int x)
 
 bool	on_eage(int y, int x, int height, int widht)
 {
-
+	// printf("start on eage\n");
 	if (y == 0 || y >= height)
 		return (print_message("0 on eage"), true);
 	else if (x == 0 || x >= widht)
@@ -70,9 +45,10 @@ bool	check_walls(char **map, int height, int widht)
 	i = 0;
 	j = 0;
 	//todo
-	printf("function dfs_check_walls:STUB\n");
+	// printf("function check_walls:STUB\n");
 	while (map[i])
 	{
+		// printf("check wall, line:%s\n", map[i]);
 		j = 0;
 		while (map[i][j] != '\0')
 		{

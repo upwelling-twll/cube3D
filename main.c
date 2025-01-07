@@ -17,6 +17,6 @@ int	main(int argc, char *argv[])
 	else
 		return(exit_program("Program expects 1 parametor: example.cub"));
 	clean_elem_lines(initData->initLines);
-	clean_map(initData->mapLines);
+	// clean_map(initData->mapLines);
 	exit_program("Program exit");
 }
