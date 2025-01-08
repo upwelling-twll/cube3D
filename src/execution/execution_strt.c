@@ -1,7 +1,16 @@
 #include "../../inc/execution.h"
 
-# define WINDOW_W 640
-# define WINDOW_H 480
+void	get_angle(t_game_data **iData, char c)
+{
+	if (c == 'N')
+		(*iData)->angle = 0.5f * PI;
+	if (c == 'S')
+		(*iData)->angle = -0.5f * PI;
+	if (c == 'E')
+		(*iData)->angle = 0.0f * PI;
+	if (c == 'W')
+		(*iData)->angle = 1.0f * PI;
+}
 
 void	get_spawn_posit(t_game_data **iData)
 {
@@ -18,6 +27,7 @@ void	get_spawn_posit(t_game_data **iData)
 			{
 				(*iData)->sp_y = y;
 				(*iData)->sp_x = x;
+				get_angle(iData, (*iData)->mapLines[y][x]);
 			}
 			x++;
 		}
@@ -55,5 +65,9 @@ bool	execute(t_game_data **iData)
 	if (!init_sources(iData))
 		return (print_message("execution: failed init sources"), false);
 	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H, "Cube_3D");
+	render_map(iData);
+	// mlx_hook((*iData)->mlx, );
+	// mlx_hook((*iData)->mlx, DESTROY, 0, destroy_prog, iData);
+	mlx_loop((*iData)->mlx);
 	return (true);
 }

@@ -64,6 +64,7 @@ typedef struct s_game_data
 
 	int				sp_x;
 	int				sp_y;
+	int				angle;
 
 	void			*mlx;
 	void			*win_ptr;
