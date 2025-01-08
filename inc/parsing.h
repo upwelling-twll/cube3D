@@ -37,6 +37,14 @@ typedef struct s_txtr
 	char	*path;
 	int		fd;
 	bool	status;
+
+	void	*img;
+	void	*addr;
+	int		endian;
+	int		bpp;
+	int		width;
+	int		height;
+	int		line_len;
 }		t_txtr;
 
 typedef struct s_game_data
@@ -49,12 +57,16 @@ typedef struct s_game_data
 	t_rgb			floor;
 	t_rgb			celling;
 
-	// t_lmap			**map;
-
 	t_parsed_lines **initLines;
 	char			**mapLines;
 	int				map_height;
 	int				map_widht;
+
+	int				sp_x;
+	int				sp_y;
+
+	void			*mlx;
+	void			*win_ptr;
 } 		t_game_data;
 
 //verif_map.c
