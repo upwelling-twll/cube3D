@@ -13,24 +13,25 @@ void	draw_interior(t_game_data **idata)
 	unsigned int	npxl;
 
 	iaddr = (unsigned int*)(*idata)->img.addr;
-	npxl = ((WINDOW_W * WINDOW_H) / 2) + 1;
+	npxl = ((WINDOW_W * WINDOW_H)) + 1;
 	rgb_to_hex(&(*idata)->celling);
 	rgb_to_hex(&(*idata)->floor);
 	// printf("hex colour: %x\n", (*idata)->celling.hcolour);
 	while (--npxl > 0)
 		*iaddr++ = (*idata)->celling.hcolour;
-	npxl = ((WINDOW_W * WINDOW_H) / 2) + 1;
+	npxl = ((WINDOW_W * WINDOW_H)) + 1;
 	while (--npxl > 0)
 		*iaddr++ = (*idata)->floor.hcolour;
 }
 
 void	draw_map(t_game_data **data)
 {
-	(*data)->img.img = mlx_new_image((*data)->mlx, WINDOW_W, WINDOW_H);
+	(*data)->img.img = mlx_new_image((*data)->mlx, WINDOW_W /2, WINDOW_H);
 	(*data)->img.addr = mlx_get_data_addr((*data)->img.img, &(*data)->img.bpp, \
 		 &(*data)->img.line_len, &(*data)->img.endian);
 	//might add if (*data)->img.img != NULL : ft_bzero(img.addr)
-	draw_interior(data);
+	practice_rcasting(data);
+	// draw_interior(data);
 	// if (!raycasing(data))
 	// 	return ;
 	mlx_put_image_to_window((*data)->mlx,(*data)->win_ptr, (*data)->img.img, 0, 0);
