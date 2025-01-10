@@ -14,8 +14,9 @@ SRC = main.c ./src/parsing/parsing_start.c  \
 	./utils/validation_elem_utils.c	./utils/validation_map_utils.c	./utils/validation_map_edit.c\
 	./src/validation/validation_start.c	./src/validation/validation_elem.c	 \
 	./src/validation/validation_map.c ./src/validation/validation_walls.c\
-	./src/execution/execution_strt.c ./src/execution/execution_rcast.c  ./src/execution/execution_dda.c 
- 
+	./src/execution/execution_strt.c ./src/execution/execution_rcast.c  ./src/execution/execution_dda.c \
+	./src/execution/execution_draw.c
+
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror -O3 -g #-fsanitize=address

@@ -24,11 +24,13 @@ typedef	struct s_parsed_lines
 
 typedef	struct s_rgb
 {
-	int		red;
-	int		green;
-	int		blue;
+	unsigned int	hcolour;
 
-	bool	status;
+	int				red;
+	int				green;
+	int				blue;
+
+	bool			status;
 }		t_rgb;
 
 typedef struct s_txtr
@@ -46,6 +48,17 @@ typedef struct s_txtr
 	int		height;
 	int		line_len;
 }		t_txtr;
+
+typedef struct s_img
+{
+	void			*img;
+	void			*addr;
+	int				endian;
+	int				bpp;
+	int				width;
+	int				height;
+	int				line_len;
+}		t_img;
 
 typedef struct s_game_data
 {
@@ -68,6 +81,7 @@ typedef struct s_game_data
 
 	void			*mlx;
 	void			*win_ptr;
+	t_img			img;
 } 		t_game_data;
 
 //verif_map.c

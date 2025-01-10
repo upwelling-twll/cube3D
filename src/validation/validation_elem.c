@@ -149,8 +149,6 @@ bool	is_unique(t_game_data **d, char *t)
 		return (true);
 }
 
-
-
 bool	is_etoken(char *cpline, char **etype)
 {
 	char	*types[6];

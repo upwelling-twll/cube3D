@@ -9,7 +9,10 @@
 //execution_dda.c
 
 //execution_rcast.c
-void	render_map(t_game_data **data);
+bool	raycasting(t_game_data **idata);
+
+//execution_draw.c
+void	draw_map(t_game_data **data);
 
 //execution_strt.c
 bool	execute(t_game_data **iData);
