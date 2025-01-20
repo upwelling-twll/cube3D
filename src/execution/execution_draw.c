@@ -32,8 +32,9 @@ void	draw_map(t_game_data **data)
 	//might add if (*data)->img.img != NULL : ft_bzero(img.addr)
 	// practice_rcasting(data);
 	draw_interior(data);
-	// if (!raycasing(data))
-	// 	return ;
+	printf("complete draw interior\n");
+	if (!raycasting(data))
+		return (print_message("tried raycasting\n"));
 	mlx_put_image_to_window((*data)->mlx,(*data)->win_ptr, (*data)->img.img, 0, 0);
 	mlx_destroy_image((*data)->mlx, (*data)->img.img);
 	return ;
