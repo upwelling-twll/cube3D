@@ -42,7 +42,6 @@ void	draw_map(t_game_data **data);
 bool	execute(t_game_data **iData);
 
 //execution_utils.c
-static float	save_colour(t_game_data *data, float d, int c, float w);
 int				get_isign(float n);
 
 #endif

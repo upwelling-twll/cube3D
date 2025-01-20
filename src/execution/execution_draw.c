@@ -30,8 +30,8 @@ void	draw_map(t_game_data **data)
 	(*data)->img.addr = mlx_get_data_addr((*data)->img.img, &(*data)->img.bpp, \
 		 &(*data)->img.line_len, &(*data)->img.endian);
 	//might add if (*data)->img.img != NULL : ft_bzero(img.addr)
-	practice_rcasting(data);
-	// draw_interior(data);
+	// practice_rcasting(data);
+	draw_interior(data);
 	// if (!raycasing(data))
 	// 	return ;
 	mlx_put_image_to_window((*data)->mlx,(*data)->win_ptr, (*data)->img.img, 0, 0);

@@ -1,5 +1,12 @@
 #include "../../inc/execution.h"
 
+static float	save_colour(t_game_data *data, float d, int c, float w)
+{
+	data->txt_id = c;
+	data->txt_w = w;
+	return (d);
+}
+
 void	init_ray(t_game_data *data, t_ray *ray, float v)
 {
 	ray->delta.x = cos(v);

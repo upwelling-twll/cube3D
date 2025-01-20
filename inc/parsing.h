@@ -52,22 +52,6 @@ typedef struct s_img
 	int				line_len;
 }		t_img;
 
-typedef struct s_vec
-{
-	float	x;
-	float	y;
-}		t_vec;
-
-typedef struct s_ray
-{
-	t_vec	d;
-	t_vec	s;
-	t_vec	horiz;
-	t_vec	vertc;
-	t_vec	dist;
-	t_vec	width;
-}		t_ray;
-
 typedef struct s_game_data
 {
 	t_txtr			no_path;
@@ -78,6 +62,7 @@ typedef struct s_game_data
 	t_rgb			floor;
 	t_rgb			celling;
 	float			txt_w;
+	int				txt_id;
 
 	t_parsed_lines **initLines;
 	char			**mapLines;
@@ -88,7 +73,6 @@ typedef struct s_game_data
 	int				sp_y;
 	int				angle;
 	int				view;
-	t_ray			ray;
 
 	void			*mlx;
 	void			*win_ptr;
