@@ -61,8 +61,9 @@ typedef struct s_game_data
 
 	t_rgb			floor;
 	t_rgb			celling;
-	float			txt_w;
 	int				txt_id;
+	float			txt_w;
+	t_txtr			cur_txt;
 
 	t_parsed_lines **initLines;
 	char			**mapLines;

@@ -15,7 +15,6 @@ typedef	struct s_vec
 	float	y;
 }	t_vec;
 
-
 typedef	struct s_ray
 {
 	int		sx;
@@ -26,7 +25,7 @@ typedef	struct s_ray
 	float	hdist;
 	float	vdist;
 	float	vert_w;
-	float	hor_w;	
+	float	hor_w;
 }	t_ray;
 
 //execution_dda.c
