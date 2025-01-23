@@ -4,9 +4,9 @@
 # include "./validation.h"
 # include <math.h>
 
-# define WINDOW_W 1024 //640 
-# define WINDOW_H 512 //480
-# define PI 3.14
+# define WINDOW_W 640 //1024
+# define WINDOW_H 480 //512
+# define PI 3.141592
 # define FOV 1.047f //60 degrees
 
 typedef	struct s_vec
