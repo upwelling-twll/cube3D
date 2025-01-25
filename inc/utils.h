@@ -8,6 +8,9 @@
 #include "./parsing.h"
 # include "../mlx/mlx.h"
 
+//execution_utils.c
+bool	iswall(char c);
+
 //validation_map_edit.c
 char	**replace_spaces(char **map, int max, int rows);
 int	 	get_maxlen(char **map, int **rows_len, int rows);

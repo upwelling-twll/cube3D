@@ -62,14 +62,14 @@ float	set_ray(t_game_data *data, float v)
 		set_vert_horiz_dist(data, &new_ray);
 		if (new_ray.vdist < new_ray.hdist)
 		{
-			if (data->mapLines[(int)new_ray.vertic.y][(int)new_ray.vertic.x + (new_ray.sx - 1) / 2] == '1')
+			if (iswall(data->mapLines[(int)new_ray.vertic.y][(int)new_ray.vertic.x + (new_ray.sx - 1) / 2]))
 				return (save_colour(data, new_ray.vdist, new_ray.sx + 1, new_ray.vert_w));
 			else
 				new_ray.vertic.x =  new_ray.vertic.x + new_ray.sx;
 		}
 		else
 		{
-			if (data->mapLines[(int)new_ray.horiz.y + (new_ray.sy - 1) / 2][(int)new_ray.horiz.x] == '1')
+			if (iswall(data->mapLines[(int)new_ray.horiz.y + (new_ray.sy - 1) / 2][(int)new_ray.horiz.x]))
 				return (save_colour(data, new_ray.hdist, new_ray.sy + 2, new_ray.hor_w));
 			else
 				new_ray.horiz.y = new_ray.horiz.y + new_ray.sy;
@@ -83,6 +83,7 @@ bool	raycasting(t_game_data **idata)
 	float	v;
 	int		x;
 
+	print_validation_map((*idata)->mapLines, "Execution ");
 	v = (*idata)->angle - FOV / 2;
 	dv = FOV / (WINDOW_W - 1);
 	x = -1;
