@@ -110,8 +110,8 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 			free(line);
 		return (false);
 	}
-	if (initData->initLines)
-		print_parsed_textures(*(initData->initLines));
+	// if (initData && initData->initLines)
+	// 	print_parsed_textures(*(initData->initLines));
 	if (line)
 	{
 		*map_line = ft_strdup(line);
