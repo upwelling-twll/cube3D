@@ -43,9 +43,11 @@ bool	parsing(char *path, t_game_data **initData)
 		else
 			printf("Parsing. saving map: did not save map\n");
 	}
-	else //initData cleaned in parse_texture function exit_textures;
+	else
 		printf("Parsing textures: did not parse textures\n");
 	close(fd);
+	if (map_line)
+		free(map_line);
 	return (false);
 }
 

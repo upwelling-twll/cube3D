@@ -37,7 +37,7 @@ int		print_error(char *data, char *text);
 
 //exit_program.c
 void	clean_elem_lines(t_parsed_lines **initLines);
-int		exit_program(char *text);
+int     exit_program(char *text, t_game_data *initData);
 
 //parsing_utils.c
 bool	token_found(char *search, char *input);

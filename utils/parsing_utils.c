@@ -27,70 +27,6 @@ void	move_line(int value, char **line)
 		*line = *(line + 3);
 }
 
-// void	save_rgb(t_rgb *colours, int value, int i)
-// {
-// 	if (i == 0)
-// 		colours->red = value;
-// 	else if (i == 1)
-// 		colours->green = value;
-// 	else if (i == 2)
-// 		colours->blue = value;
-// }
-
-// bool	saved_colour(char *line, t_game_data *InitData, char *type)
-// {
-// 	int		i;
-// 	int		value;
-// 	t_rgb	*colours;
-
-// 	i = 0;
-// 	colours = maaaaalloc(sizeof(t_rgb));
-// 	while (*line != '\0' || *line != '\n')
-// 	{
-// 		skip_tab_spaces(line);
-// 		value = ft_atoi(line);
-// 		if (value < 0 || value > 255)
-// 			break;
-// 		move_line(value, &line);
-// 		save_rgb(colours, value, i);
-// 		i++;
-// 	}
-// 	if (i != 3)
-// 	{
-// 		free(colours);
-// 		return (false);
-// 	}
-// 	if (!ft_strncmp(type, "F", 1))
-// 		InitData->floor = colours;
-// 	else
-// 		InitData->celling = colours;
-// 	return (true);
-// }
-
-// bool	save_texture(char *type, char *line, t_game_data *initData)
-// {
-// 	if (ft_strncmp(type, "NO", 2) == 0)
-// 		initData->no_path = line;
-// 	else if (ft_strncmp(type, "SO", 2) == 0)
-// 		initData->so_path = line;
-// 	else if (ft_strncmp(type, "WE", 2) == 0)
-// 		initData->we_path = line;
-// 	else if (ft_strncmp(type, "EA", 2) == 0)
-// 		initData->ea_path = line;
-// 	else if (ft_strncmp(type, "F", 1) == 0)
-// 	{
-// 		if (!saved_colour(line, initData, "F"))
-// 			return (false);
-// 	}
-// 	else if (ft_strncmp(type, "C", 1) == 0)
-// 	{
-// 		if (!saved_colour(line, initData, "C"))
-// 			return (false);
-// 	}
-// 	return (true);
-// }
-
-
 void	clean_initData(t_game_data *initData)
 {
 	if (!initData)
@@ -142,7 +78,7 @@ char	*skip_empty_lines(int fd)
 
 bool	exit_textures(char *line, t_game_data *initData)
 {
-	clean_initData(initData);
+	// clean_initData(initData);
 	// print_error("parse_textures: found token for line:%s. Error saving token.", line);
 	if (line)
 		free(line);

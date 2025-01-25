@@ -18,9 +18,15 @@ void	clean_elem_lines(t_parsed_lines **initLines)
 	initLines = NULL;
 }
 
-int exit_program(char *text)
+int exit_program(char *text, t_game_data *initData)
 {
 	if (text)
 		printf("%s\n", text);
+	if (initData && initData->initLines)
+		clean_elem_lines(initData->initLines);
+	if (initData && initData->mapLines)
+		clean_map(initData->mapLines);
+	if (initData)
+		free(initData);
 	return (1);
 }

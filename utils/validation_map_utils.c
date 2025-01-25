@@ -50,10 +50,11 @@ void	clean_map(char **map)
 	// printf("start clean\n");
 	while(map[i])
 	{
-		// printf("clean line:%s", map[i]);
+		printf("clean line:%s", map[i]);
 		free(map[i]);
 		i++;
 	}
+	free(map);
 	return ;
 }
 

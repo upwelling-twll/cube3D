@@ -58,6 +58,7 @@ bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 	{
 		free(line);
 		line = get_next_line(fd);
+		if (line)
 			nlines++;
 	}
 	close(fd);
@@ -73,7 +74,8 @@ bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 
 bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line)
 {
-	map_line = skip_empty_lines(fd);
+	// map_line = skip_empty_lines(fd);
+	printf(" map line after skip:%s$\n", map_line);
 	if (!map_line || is_eof(*map_line))
 		return (print_error(NULL, "Parse map:did not find any map to copy"));
 	if (!go_through_map(path, fd, map_line, initData))
