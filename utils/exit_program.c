@@ -18,6 +18,13 @@ void	clean_elem_lines(t_parsed_lines **initLines)
 	initLines = NULL;
 }
 
+bool	exit_textures(char *line)
+{
+	if (line)
+		free(line);
+	return (false);
+}
+
 int exit_program(char *text, t_game_data *initData)
 {
 	if (text)

@@ -20,7 +20,7 @@ SRC = main.c ./src/parsing/parsing_start.c  \
 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = #-Wall -Wextra -Werror -O3 -g #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror -O3 -g #-fsanitize=address
 
 LIBFT:= libft/libft.a
 

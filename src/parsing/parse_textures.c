@@ -108,7 +108,7 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 		print_error("Parsing intit info", "Do not have 6 lines");
 		if (line)
 			free(line);
-		return (exit_textures(NULL, initData));
+		return (exit_textures(NULL));
 	}
 	// if (initData && initData->initLines)
 	// 	print_parsed_textures(*(initData->initLines));

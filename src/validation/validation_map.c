@@ -99,19 +99,17 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	if (!is_wall(lmap[0]))
 		return (print_message("first map line is NOT wall"), false);
 	printf("Validation: first map line is a wall\n");
-	nmap= remove_last_nlsp(idata);
+	nmap = remove_last_nlsp(idata);
 	if (!nmap)
 		return (print_message("map error: after removing last nlsp"), false);
-	// print_validation_map((*idata)->mapLines, "Removed exptra nlsp");
+	 print_validation_map((*idata)->mapLines, "Removed exptra nlsp");
 	lnum = get_array_size((*idata)->mapLines);
-	if (!is_wall(nmap[lnum]) ) // || !has_internal_walls(nmap)
+	if (!is_wall(nmap[lnum - 1]) ) // 
 		return (print_message("walls check failed"), false);
 	if (!(replace_sp_to_x(idata, lnum)))
 		return (print_message("replacing 'spaces' to 'x' error"), false);
 	if  (!check_walls((*idata)->mapLines, (*idata)->map_height, (*idata)->map_widht))
 		return (print_message("Spaces check failed"), false);
-	// if (!compare_maps((*idata)->mapLines, nmap))
-	// 	return (clean_map(nmap), print_error(NULL, "compare maps error"));
 	return (print_message("Validation: is_valid_map OK"), true);
 }	
 

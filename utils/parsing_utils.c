@@ -75,12 +75,3 @@ char	*skip_empty_lines(int fd)
 	}
 	return (NULL);
 }
-
-bool	exit_textures(char *line, t_game_data *initData)
-{
-	// clean_initData(initData);
-	// print_error("parse_textures: found token for line:%s. Error saving token.", line);
-	if (line)
-		free(line);
-	return (false);
-}
