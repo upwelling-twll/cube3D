@@ -26,6 +26,10 @@ void	init_ray(t_game_data *data, t_ray *ray, float v)
 	ray->horiz.y = (int) data->sp_y;
 	if (ray->sy > 0)
 		ray->horiz.y = ray->horiz.y + 1.0f;
+	ray->vertic.y = 0;
+	ray->horiz.x = 0;
+	ray->vert_w = 0;
+	ray->hor_w = 0;
 } 
 
 void	set_vert_horiz_dist(t_game_data *data, t_ray *ray)

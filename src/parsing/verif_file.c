@@ -5,9 +5,9 @@ bool	verify_file_xpm(char *input)
 	int		len;
 	// void	*mlx;
 	// void	*img;
-	int		size;
+	// int		size;
 
-	size = 1000;
+	// size = 1000;
 	len = ft_strlen(input);
 	if (len > 4 && (input[len - 4] == '.' && input[len - 3] == 'x' \
 			&& input[len - 2] == 'p' && input[len - 1] == 'm'))
