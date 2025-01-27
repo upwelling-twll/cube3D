@@ -54,6 +54,7 @@ void	clean_map(char **map)
 		free(map[i]);
 		i++;
 	}
+	free(map);
 	return ;
 }
 
@@ -63,8 +64,7 @@ char	**copy_map(t_game_data **idata, char **map, int rows)
 	int	i;
 
 	i  = 0;
-	printf("number of rows to copy: %i\n", rows);
-	nmap = malloc(sizeof(char *) * rows );
+	nmap = malloc(sizeof(char *) * (rows + 1));
 	if (!nmap)
 		return (NULL);
 	while (i < rows)
@@ -115,6 +115,6 @@ int	get_array_size(char **array)
 		return(0);
 	while (array[i])
 		i++;
-	return (i - 1);
+	return (i);
 }
 

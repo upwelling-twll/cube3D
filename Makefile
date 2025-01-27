@@ -16,7 +16,6 @@ SRC = main.c ./src/parsing/parsing_start.c  \
 	./src/validation/validation_map.c ./src/validation/validation_walls.c\
 	./src/execution/execution_strt.c ./src/execution/execution_rcast.c  ./src/execution/execution_dda.c \
 	./src/execution/execution_draw.c \
-	./src/execution/practice.c
 
 OBJ = $(SRC:.c=.o)
 

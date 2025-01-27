@@ -1,3 +1,12 @@
+#include "../inc/utils.h"
+
+bool	iswall(char c)
+{
+	if (c == '1' || c == 'x')
+		return (true);
+	return (false);
+}
+
 int	get_isign(float n)
 {
 	if (n < 0.0f)

@@ -8,6 +8,9 @@
 #include "./parsing.h"
 # include "../mlx/mlx.h"
 
+//execution_utils.c
+bool	iswall(char c);
+
 //validation_map_edit.c
 char	**replace_spaces(char **map, int max, int rows);
 int	 	get_maxlen(char **map, int **rows_len, int rows);
@@ -34,14 +37,14 @@ int		print_error(char *data, char *text);
 
 //exit_program.c
 void	clean_elem_lines(t_parsed_lines **initLines);
-int		exit_program(char *text);
+bool	exit_textures( char *line);
+int     exit_program(char *text, t_game_data *initData);
 
 //parsing_utils.c
 bool	token_found(char *search, char *input);
 bool	save_texture(char *type, char *line,  t_game_data *initData);
 bool	is_empty_line(char *line);
 char	*skip_empty_lines(int fd);
-bool	exit_textures( char *line, t_game_data *initData);
 
 //parse_map.c
 bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line);

@@ -8,10 +8,11 @@ char	**replace_spaces(char **map, int max, int rows)
 
 	i = 0;
 	j = 0;
-	nmap = malloc(sizeof(char *)* rows + 1);
+	nmap = malloc(sizeof(char *)* (rows + 1));
 	if (!nmap)
 		return (NULL);
-	while (i <= rows)
+	printf("rows:%i\n", rows);
+	while (i < rows)
 	{
 		j = 0;
 		nmap[i] = malloc(sizeof(char) * max + 1);
