@@ -4,8 +4,8 @@
 # include "./validation.h"
 # include <math.h>
 
-# define WINDOW_W 1024 //640 
-# define WINDOW_H 512 //480
+# define WINDOW_W 640 //640 
+# define WINDOW_H 480 //480
 # define PI 3.14
 # define FOV 1.047f //60 degrees
 
