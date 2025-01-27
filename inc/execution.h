@@ -6,7 +6,7 @@
 
 # define WINDOW_W 640 //1024
 # define WINDOW_H 480 //512
-# define PI 3.141592
+# define PI 3.14159265358979323846
 # define FOV 1.047f //60 degrees
 
 typedef	struct s_vec
