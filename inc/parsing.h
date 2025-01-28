@@ -70,10 +70,10 @@ typedef struct s_game_data
 	int				map_height;
 	int				map_widht;
 
-	int				sp_x;
-	int				sp_y;
-	int				angle;
-	int				view;
+	float				sp_x;
+	float				sp_y;
+	float				angle;
+	// int				view;
 
 	void			*mlx;
 	void			*win_ptr;

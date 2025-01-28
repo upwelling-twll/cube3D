@@ -25,9 +25,10 @@ void	get_spawn_posit(t_game_data **iData)
 		{
 			if (is_hero((*iData)->mapLines[y][x]))
 			{
-				(*iData)->sp_y = y;
-				(*iData)->sp_x = x;
+				(*iData)->sp_y = y + 0.5f;
+				(*iData)->sp_x = x + 0.5f;
 				get_angle(iData, (*iData)->mapLines[y][x]);
+				printf("hero spawn position : x=%f, y=%f\n", (*iData)->sp_x, (*iData)->sp_y);
 			}
 			x++;
 		}
