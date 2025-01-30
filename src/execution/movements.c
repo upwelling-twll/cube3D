@@ -51,8 +51,8 @@ void	move(t_game_data **data, int direc)
 	float	angle;
 
 	angle = (*data)->angle + direc * M_PI / 2;
-	dx = 0.3f * cos(angle);
-	dy = 0.3f * sin(angle);
+	dx = 0.05f * cos(angle);
+	dy = 0.05f * sin(angle);
 	dist = set_ray(*data, get_isign(dy) * M_PI / 2);
 	if (dist * dist < dy * dy)
 		dy = 0.0f;
@@ -70,7 +70,7 @@ void	move(t_game_data **data, int direc)
 
 int	key_hook(int keycode, t_game_data **data)
 {
-	mlx_clear_window((*data)->mlx, (*data)->win_ptr);
+	// mlx_clear_window((*data)->mlx, (*data)->win_ptr);
 	if (keycode == W)
 		move(data, 0);
 	if (keycode == S)

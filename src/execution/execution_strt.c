@@ -68,7 +68,7 @@ bool	execute(t_game_data **iData)
 	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H, "Cube_3D");
 	draw_map(iData);
 	printf("draw map done\n");
-	mlx_key_hook((*iData)->win_ptr, key_hook, iData);
+	mlx_hook((*iData)->win_ptr, 2, 0,key_hook, iData);
 	// mlx_hook((*iData)->mlx, DESTROY, 0, destroy_prog, iData);
 	mlx_loop((*iData)->mlx);
 	return (true);
