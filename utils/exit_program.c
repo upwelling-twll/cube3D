@@ -25,6 +25,30 @@ bool	exit_textures(char *line)
 	return (false);
 }
 
+void	clean_textures(t_game_data *data)
+{
+	if (data->no_path.status == true)
+	{
+		free(data->no_path.type);
+		free(data->no_path.path);
+	}
+	if (data->so_path.status == true)
+	{
+		free(data->so_path.type);
+		free(data->so_path.path);
+	}
+	if (data->we_path.status == true)
+	{
+		free(data->we_path.type);
+		free(data->we_path.path);
+	}
+	if (data->ea_path.status == true)
+	{
+		free(data->ea_path.type);
+		free(data->ea_path.path);
+	}
+}
+
 int exit_program(char *text, t_game_data *initData)
 {
 	if (text)
@@ -33,6 +57,8 @@ int exit_program(char *text, t_game_data *initData)
 		clean_elem_lines(initData->initLines);
 	if (initData && initData->mapLines)
 		clean_map(initData->mapLines);
+	if (initData)
+		clean_textures(initData);
 	if (initData)
 		free(initData);
 	return (1);

@@ -47,7 +47,7 @@ int	is_etoken_len(char *line)
 	
 	i = 0;
 	line = skip_tab_spaces(line);
-	while (!(is_tab_or_space(line[i])))
+	while (line[i] && !(is_tab_or_space(line[i])))
 		i++;
 	return (i);
 }
