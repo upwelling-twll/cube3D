@@ -37,7 +37,7 @@ bool	parsing(char *path, t_game_data **initData)
 		if (parse_map(path, fd, *initData, map_line))
 		{
 			close(fd);
-			print_parsed_map((*initData)->mapLines);
+			// print_parsed_map((*initData)->mapLines);
 			return (true);
 		}
 		else
@@ -45,12 +45,16 @@ bool	parsing(char *path, t_game_data **initData)
 	}
 	else
 		printf("Parsing textures: did not parse textures\n");
+	printf("closing fd\n");
 	close(fd);
+	printf("closed fd\n");
 	if (map_line)
 	{
+		printf("map line\n");
 		printf("cleaning remaining map line^%s\n", map_line);
 		free(map_line);
 	}
+	printf("exiting parsing\n");
 	return (false);
 }
 

@@ -80,7 +80,6 @@ int search_elements(char *line, t_game_data *initData, int pe)
 
 bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 {
-	// char	*type[] = {"NO", "SO", "WE", "EA", "F", "C"};
 	char	*line;
 	int		parsed_elements;
 	int		minimum_elements;
@@ -102,16 +101,14 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 		line = skip_empty_lines(fd);
 		*(initData->initLines) = head;
 	}
-	// printf("end parse textures, lst size=%i\n", ft_lstsize_pl(head));
 	if (parsed_elements < minimum_elements || ft_lstsize_pl(head) < 6)
 	{
 		print_error("Parsing intit info", "Do not have 6 lines");
 		if (line)
 			free(line);
+		*map_line = NULL;
 		return (exit_textures(NULL));
 	}
-	// if (initData && initData->initLines)
-	// 	print_parsed_textures(*(initData->initLines));
 	if (line)
 	{
 		*map_line = ft_strdup(line);
