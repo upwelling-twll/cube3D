@@ -58,6 +58,7 @@ bool	valid_elements(t_game_data **idata)
 
 bool	validation(t_game_data **idata)
 {
+	printf("validation start\n");
 	if (!(*idata) || !((*idata)->initLines) || !((*idata)->mapLines))
 	{
 		printf("validation:no init data or lines or map\n");

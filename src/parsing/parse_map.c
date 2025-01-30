@@ -80,5 +80,6 @@ bool	parse_map(char *path, int fd, t_game_data *initData, char *map_line)
 		return (print_error(NULL, "Parse map:did not find any map to copy"));
 	if (!go_through_map(path, fd, map_line, initData))
 		return (print_error(NULL, "Parse map:did not find any map to copy"));
+	printf("ending parse map\n");
 	return (true);
 }
