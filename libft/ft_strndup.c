@@ -31,6 +31,6 @@ char	*ft_strndup(const char *s1, ssize_t len)
 		*(char *)(cp + i) = *(char *)(s1 + i);
 		i++;
 	}
-	 *(char *)(cp + i - 1) = '\0';
+	 *(char *)(cp + i ) = '\0';
 	return (cp);
 }
