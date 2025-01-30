@@ -8,6 +8,15 @@
 # define WINDOW_H 512 //480
 # define PI 3.14
 # define FOV 1.047f //60 degrees
+# define W	13
+# define A	0
+# define S	1
+# define D	2
+# define UP	126
+# define DOWN	125
+# define LEFT	123
+# define RIGHT	124
+# define ESC	53
 
 typedef	struct s_vec
 {
@@ -42,5 +51,8 @@ bool	execute(t_game_data **iData);
 
 //execution_utils.c
 int				get_isign(float n);
+
+//movements.c
+int	key_hook(int keycode, t_game_data **data);
 
 #endif
