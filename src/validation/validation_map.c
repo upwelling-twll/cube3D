@@ -55,14 +55,13 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 {
 	char	**nmap;
 	char	**map;
-	int		*rows_len;
 	int		max_len;
 
 	max_len = 0;
 	map = (*idata)->mapLines;
 	if (!idata || !(*idata)->mapLines)
 		return (false);
-	max_len = get_maxlen(map, &rows_len, rows);
+	max_len = get_maxlen(map);
 	if (!max_len)
 		return (false);
 	// printf("max len = %i\n", max_len);

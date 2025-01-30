@@ -13,7 +13,7 @@ bool	iswall(char c);
 
 //validation_map_edit.c
 char	**replace_spaces(char **map, int max, int rows);
-int	 	get_maxlen(char **map, int **rows_len, int rows);
+int	 	get_maxlen(char **map);
 
 //validation_map_utils.c
 char	**remove_last_nlsp(t_game_data **idata);

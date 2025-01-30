@@ -38,21 +38,22 @@ char	**replace_spaces(char **map, int max, int rows)
 	return (nmap);
 }
 
-int	 get_maxlen(char **map, int **rows_len, int rows)
+int	 get_maxlen(char **map)
 {
 	int	max;
+	int	len;
 	int	i;
 
 	max = 0;
 	i = 0;
-	(*rows_len) = malloc(sizeof(int) * rows);
-	if (!rows_len)
-		return (0);
+	// (*rows_len) = malloc(sizeof(int) * rows);
+	// if (!rows_len)
+	// 	return (0);
 	while (map[i])
 	{
-		(*rows_len)[i] = ft_strlen(map[i]);
-		if (max < (*rows_len)[i])
-			max = (*rows_len)[i];
+		len = ft_strlen(map[i]);
+		if (max < len)
+			max = len;
 		i++;
 	}
 	return (max);

@@ -12,8 +12,8 @@ int	main(int argc, char *argv[])
 			return(exit_program("Verify file - NOK\n exiting Cube3D", initData));
 		if (!(parsing(argv[1], &initData)))
 			return(exit_program("Parsing - NOK\n exiting Cube3D", initData));
-		// if (!validation(&initData))
-		// 	return(exit_program("Validation - NOK\n exiting Cube3D", initData));
+		if (!validation(&initData))
+			return(exit_program("Validation - NOK\n exiting Cube3D", initData));
 		if (!execute(&initData))
 			return(exit_program("Execution -NOK\n exiting Cube3D", initData));
 	}
