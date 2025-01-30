@@ -69,7 +69,7 @@ char	**copy_map(t_game_data **idata, char **map, int rows)
 		return (NULL);
 	while (i < rows)
 	{
-		if (map[i][ft_strlen(map[i]) - 1] == '\n')	
+		if (map[i][ft_strlen(map[i]) - 1] == '\n')
 			nmap[i] = ft_strndup(map[i], (ft_strlen_sst(map[i])) - 1);
 		else
 			nmap[i] = ft_strdup(map[i]);
