@@ -96,5 +96,5 @@ bool	raycasting(t_game_data **idata)
 		set_line((*idata), x, set_ray((*idata), v) * cos((*idata)->angle - v));
 		v = v + dv;
 	}
-	return (true);
+	return (print_message("raycasting exit\n"), true);
 }

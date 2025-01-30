@@ -42,6 +42,7 @@ void	set_line(t_game_data *idata, int x, float v);
 
 //execution_rcast.c
 bool	raycasting(t_game_data **idata);
+float	set_ray(t_game_data *data, float v);
 
 //execution_draw.c
 void	draw_map(t_game_data **data);
