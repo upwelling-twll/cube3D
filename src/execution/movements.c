@@ -25,15 +25,6 @@ void changed_position(t_game_data *data, float x, float y)
 	draw_map(&data);
 }
 
-// void changed_position(t_game_data *data, float x, float y)
-// {
-// 	if (data->mapLines[(int) data->sp_y][(int) x] == '0')
-// 		data->sp_x = x;
-// 	if (data->mapLines[(int) y][(int)data->sp_x] == '0')
-// 		data->sp_y = y;
-// 	draw_map(&data);
-// }
-
 void	updating(t_game_data *data, float *x, float *y, float angle)
 {
 	float	speed;
@@ -71,6 +62,7 @@ void	move(t_game_data **data, int direc)
 int	key_hook(int keycode, t_game_data **data)
 {
 	// mlx_clear_window((*data)->mlx, (*data)->win_ptr);
+	printf("key pressed:%i\n", keycode);
 	if (keycode == W)
 		move(data, 0);
 	if (keycode == S)
@@ -81,36 +73,3 @@ int	key_hook(int keycode, t_game_data **data)
 		move(data, 1);
 	return (0);
 }
-
-// int	key_hook(int keycode, t_game_data **data)
-// {
-// 	float	x;
-// 	float	y;
-
-// 	printf("have key hook\n");
-// 	x = (*data)->sp_x;
-// 	y = (*data)->sp_y;
-
-// 	// if ((*data)->keys.w)
-// 	// 	updating((*data), &x, &y, M_PI_2);
-// 	// if ((*data)->keys.s)
-// 	// 	updating((*data), &x, &y, -1.f * M_PI_2);
-// 	// if ((*data)->keys.a)
-// 	// 	updating((*data), &x, &y, M_PI);
-// 	// if ((*data)->keys.d)
-// 	// 	updating((*data), &x, &y, 0.f);
-// 	mlx_clear_window((*data)->mlx, (*data)->win_ptr);
-// 	printf("before key player x:	%f\nplayer y:	%f\n\n", (*data)->sp_x, (*data)->sp_y);
-// 	if (keycode == W)
-// 		updating((*data), &((*data)->sp_x), &((*data)->sp_y), M_PI_2);
-// 	if (keycode == S)
-// 		updating((*data), &((*data)->sp_x), &((*data)->sp_y), -1.f * M_PI_2);
-// 	if (keycode == A)
-// 		updating((*data), &((*data)->sp_x), &((*data)->sp_y), M_PI);
-// 	if (keycode == D)
-// 		updating((*data), &((*data)->sp_x), &((*data)->sp_y), 0.f);
-// 	printf("after key player x:	%f\nplayer y:	%f\n\n", (*data)->sp_x, (*data)->sp_y);
-// 	changed_position((*data), x, y);
-// 	// draw_map(data);
-// 	return (0);
-// }

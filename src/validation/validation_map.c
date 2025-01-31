@@ -70,8 +70,8 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	nmap = replace_spaces(map, max_len, rows);
 	if (!nmap)
 		return (false);
-	 print_validation_map(nmap, "Replaced sp to 'x'");
-	// clean_map((*idata)->mapLines);
+	print_validation_map(nmap, "Replaced sp to 'x'");
+	clean_map((*idata)->mapLines);
 	(*idata)->mapLines = nmap;
 	return (true);
 }

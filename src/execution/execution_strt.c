@@ -59,6 +59,17 @@ bool	init_sources(t_game_data **iData)
 	return (true);
 }
 
+int	destroy_prog(t_game_data *iData)
+{
+	if (iData->win_ptr)
+		mlx_destroy_window(iData->mlx, iData->win_ptr);
+	mlx_destroy_image(iData->mlx, iData->no_path.img);
+	mlx_destroy_image(iData->mlx, iData->so_path.img);
+	mlx_destroy_image(iData->mlx, iData->we_path.img);
+	mlx_destroy_image(iData->mlx, iData->ea_path.img);
+	exit (1);
+}
+
 bool	execute(t_game_data **iData)
 {
 	get_spawn_posit(iData);
@@ -68,8 +79,8 @@ bool	execute(t_game_data **iData)
 	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H, "Cube_3D");
 	draw_map(iData);
 	printf("draw map done\n");
-	mlx_hook((*iData)->win_ptr, 2, 0,key_hook, iData);
-	// mlx_hook((*iData)->mlx, DESTROY, 0, destroy_prog, iData);
+	mlx_hook((*iData)->win_ptr, 2, 0, key_hook, iData);
+	// mlx_hook((*iData)->win_ptr, ESC, 0, &destroy_prog, *iData);
 	mlx_loop((*iData)->mlx);
 	return (true);
 }
