@@ -63,6 +63,8 @@ int	key_hook(int keycode, t_game_data **data)
 {
 	// mlx_clear_window((*data)->mlx, (*data)->win_ptr);
 	printf("key pressed:%i\n", keycode);
+	if (keycode == ESC)
+		destroy_prog(*data);
 	if (keycode == W)
 		move(data, 0);
 	if (keycode == S)
