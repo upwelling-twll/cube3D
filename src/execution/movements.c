@@ -90,5 +90,6 @@ int	rotate(int keycode, t_game_data *data)
 		data->angle += 2.f * M_PI;
 	if (data->angle > 2.f * M_PI)
 		data->angle -= 2.f * M_PI;
+	draw_map(&data);
 	return (0);
 }
