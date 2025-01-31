@@ -67,6 +67,7 @@ int	destroy_prog(t_game_data *iData)
 	mlx_destroy_image(iData->mlx, iData->so_path.img);
 	mlx_destroy_image(iData->mlx, iData->we_path.img);
 	mlx_destroy_image(iData->mlx, iData->ea_path.img);
+	exit_program("ESC program\n", iData);
 	exit (1);
 }
 
