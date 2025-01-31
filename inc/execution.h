@@ -55,6 +55,7 @@ int				get_isign(float n);
 
 //movements.c
 int	key_hook(int keycode, t_game_data **data);
+int	rotate(int keycode, t_game_data *data);
 
 int	destroy_prog(t_game_data *iData);
 
