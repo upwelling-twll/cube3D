@@ -1,5 +1,6 @@
  #include "../../inc/execution.h"
 # define SPEED	0.07f
+# define ROTATE 0.07f
 
 bool	is_free_space(char **map, float x, float y)
 {
@@ -71,5 +72,22 @@ int	key_hook(int keycode, t_game_data **data)
 		move(data, 3);
 	if (keycode == D)
 		move(data, 1);
+	if (keycode == LEFT)
+		rotate(123, *data);
+	if (keycode == RIGHT)
+		rotate(124, *data);
+	return (0);
+}
+int	rotate(int keycode, t_game_data *data)
+{
+	if (keycode == RIGHT)
+		data->angle += ROTATE;
+	if (keycode == LEFT)
+		data->angle -= ROTATE;
+	if (data->angle < 0)
+		data->angle += 2.f * M_PI;
+	if (data->angle > 2.f * M_PI)
+		data->angle -= 2.f * M_PI;
+	draw_map(&data);
 	return (0);
 }
