@@ -90,6 +90,7 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 	initData->initLines = (t_parsed_lines**)malloc(sizeof(t_parsed_lines*));
 	*(initData->initLines) = (t_parsed_lines*)malloc(sizeof(t_parsed_lines));
 	(*initData->initLines)->next = NULL;
+	(*initData->initLines)->line = NULL;
 	(*initData->initLines)->id = 1;
 	head = *initData->initLines;
 	line = skip_empty_lines(fd);
