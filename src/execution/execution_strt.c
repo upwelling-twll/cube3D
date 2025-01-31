@@ -61,13 +61,14 @@ bool	init_sources(t_game_data **iData)
 
 int	destroy_prog(t_game_data *iData)
 {
+	printf("Destroy programm\n");
 	if (iData->win_ptr)
 		mlx_destroy_window(iData->mlx, iData->win_ptr);
 	mlx_destroy_image(iData->mlx, iData->no_path.img);
 	mlx_destroy_image(iData->mlx, iData->so_path.img);
 	mlx_destroy_image(iData->mlx, iData->we_path.img);
 	mlx_destroy_image(iData->mlx, iData->ea_path.img);
-	exit_program("ESC program\n", iData);
+	exit_program("Exiting program from destroy program\n", iData);
 	exit (1);
 }
 
