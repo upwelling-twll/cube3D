@@ -51,6 +51,7 @@ void	clean_textures(t_game_data *data)
 
 int exit_program(char *text, t_game_data *initData)
 {
+	printf("exit program\n");
 	if (text)
 		printf("%s\n", text);
 	if (initData && initData->initLines)

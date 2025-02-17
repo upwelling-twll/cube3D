@@ -9,7 +9,6 @@ bool	is_free_space(char **map, float x, float y)
 
 	x1 = x + SPEED + 0.5*SPEED;
 	y1 = y + SPEED + 0.5*SPEED;
-	printf("is_empty: char %c,int:  y1=%i, x1=%i, float:y1=%f, x1=%f",map[(int)y1][(int)x1], (int)y1, (int)x1, y1, x1 );
 	if (map[(int)y1][(int)x1] == '0')
 		return (true);
 	else
@@ -18,7 +17,6 @@ bool	is_free_space(char **map, float x, float y)
 
 void changed_position(t_game_data *data, float x, float y)
 {
-	printf("map symbol (%c) for float x=%f, y=%f being int x=%i, y=%i\n", data->mapLines[(int)y][(int) x], x, y, (int)x, (int)y);
 	if (is_free_space(data->mapLines, data->sp_x, y) )
 		data->sp_x = x;
 	if (is_free_space(data->mapLines, x, data->sp_y))
