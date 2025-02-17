@@ -6,7 +6,10 @@ bool	good_file(char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd > 2)
+	{
+		close(fd);
 		return (true);
+	}
 	else if (fd >= 0 && fd <= 2)
 	{
 		print_error(file_path, "File error: can not read from standard \

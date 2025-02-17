@@ -1,8 +1,8 @@
-SO   ./flowers.xpm
+SO   ./sky.xpm
 
-   NO   ./flowers.xpm
+   NO   ./animals.xpm
            
-           WE   ./flowers.xpm
+           WE   ./sky.xpm
            EA    ./flowers.xpm
 
              F  163, 163, 163
