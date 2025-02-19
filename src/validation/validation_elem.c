@@ -44,8 +44,8 @@ bool	correct_path(char *line)
 
 bool	correct_colours(char *cpline)
 {
-	int	i;
-	int	colour;
+	int		i;
+	int		colour;
 	char	*line;
 
 	i = 0;
@@ -55,7 +55,7 @@ bool	correct_colours(char *cpline)
 		return (false);
 	while (i < 3 && *line)
 	{
-		colour = ft_atoi(line); //check is digit
+		colour = ft_atoi(line);
 		if (colour < 0 || colour > 255)
 			return (false);
 		i++;
@@ -99,7 +99,7 @@ char	*set_colour(char *line, int *rgb_compon)
 	int	n;
 
 	if (!line)
-		return(NULL);
+		return (NULL);
 	n = ft_atoi(line);
 	*rgb_compon = n;
 	line = skip_digits(line);

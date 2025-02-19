@@ -1,23 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/17 19:29:11 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/17 19:29:11 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./inc/execution.h"
 
 int	main(int argc, char *argv[])
 {
-	t_game_data	*initData;
+	t_game_data	*initdata;
 
-	initData = NULL;
-	if (argc == 2) //replace to argc == 2
+	initdata = NULL;
+	if (argc == 2)
 	{
 		if (!verify_file(argv[1]))
-			return(exit_program("Verify file - NOK\n exiting Cube3D", initData));
-		if (!(parsing(argv[1], &initData)))
-			return(exit_program("Parsing - NOK\n exiting Cube3D", initData));
-		if (!validation(&initData))
-			return(exit_program("Validation - NOK\n exiting Cube3D", initData));
-		if (!execute(&initData))
-			return(exit_program("Execution -NOK\n exiting Cube3D", initData));
+			return (exit_program("Verify file - NOK\n exiting Cube3D",
+					initdata));
+		if (!(parsing(argv[1], &initdata)))
+			return (exit_program("Parsing - NOK\n exiting Cube3D", initdata));
+		if (!validation(&initdata))
+			return (exit_program("Validation - NOK\n exiting Cube3D",
+					initdata));
+		if (!execute(&initdata))
+			return (exit_program("Execution -NOK\n exiting Cube3D", initdata));
 	}
 	else
-		return(exit_program("Program expects 1 parametor: example.cub", initData));
-	exit_program("Normal program exit", initData);
+		return (exit_program("Program expects 1 parametor: example.cub",
+				initdata));
+	exit_program("Normal program exit", initdata);
 	return (1);
 }

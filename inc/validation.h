@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/17 19:21:56 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/17 19:21:57 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VALIDATION_H
 # define VALIDATION_H
 
-#include <stdbool.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include "../libft/libft.h"
-#include "./utils.h"
+# include <stdbool.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include "../libft/libft.h"
+# include "./utils.h"
 # include "../mlx/mlx.h"
 
 //validation_walls.c
 // bool	has_internal_walls(char **map);
 bool	check_walls(char **map, int height, int widht);
-
-
 //validation_map.c
 bool	has_one_hero(char **lmap);
 bool	is_wall(char *line);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_map_utils.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/17 19:31:48 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/17 19:31:48 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/validation.h"
 
 bool	is_hero(char c)
@@ -17,10 +29,11 @@ bool	is_valid_line(char *line)
 	if (!line)
 		return (false);
 	len = ft_strlen(line);
-	while (i < len && (line[i] == ' ' || line[i] == '1' || line[i] == '0' || is_hero(line[i]) || line[i] == '\n'))
+	while (i < len && (line[i] == ' ' || line[i] == '1' || line[i] == '0'
+			|| is_hero(line[i]) || line[i] == '\n'))
 		i++;
 	if (line[i] == '\0')
-		return(true);
+		return (true);
 	else
 		return (false);
 }
@@ -47,7 +60,7 @@ void	clean_map(char **map)
 	i = 0;
 	if (!map || !map[0])
 		return ;
-	while(map[i])
+	while (map[i])
 	{
 		free(map[i]);
 		i++;
@@ -58,10 +71,10 @@ void	clean_map(char **map)
 
 char	**copy_map(t_game_data **idata, char **map, int rows)
 {
-	char **nmap;
-	int	i;
+	char	**nmap;
+	int		i;
 
-	i  = 0;
+	i = 0;
 	nmap = malloc(sizeof(char *) * (rows + 1));
 	if (!nmap)
 		return (NULL);
@@ -74,8 +87,8 @@ char	**copy_map(t_game_data **idata, char **map, int rows)
 		i++;
 	}
 	nmap[i] = NULL;
-	clean_map((*idata)->mapLines);
-	(*idata)->mapLines = nmap;
+	clean_map((*idata)->maplines);
+	(*idata)->maplines = nmap;
 	return (nmap);
 }
 
@@ -87,7 +100,7 @@ char	**remove_last_nlsp(t_game_data **idata)
 	if (!idata)
 		return (NULL);
 	i = 0;
-	map = (*idata)->mapLines;
+	map = (*idata)->maplines;
 	while (map[i])
 	{
 		if (!is_empty_line(map[i]))
@@ -99,7 +112,7 @@ char	**remove_last_nlsp(t_game_data **idata)
 		else if (!end_of_map(map, i))
 			return (print_message("error:next lines are unempty"), NULL);
 		else
-			break;
+			break ;
 	}
 	return (copy_map(idata, map, i));
 }
@@ -110,9 +123,8 @@ int	get_array_size(char **array)
 
 	i = 0;
 	if (!array || !array[0])
-		return(0);
+		return (0);
 	while (array[i])
 		i++;
 	return (i);
 }
-

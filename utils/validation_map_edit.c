@@ -3,15 +3,14 @@
 char	**replace_spaces(char **map, int max, int rows)
 {
 	char	**nmap;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
-	nmap = malloc(sizeof(char *)* (rows + 1));
+	nmap = malloc(sizeof(char *) * (rows + 1));
 	if (!nmap)
 		return (NULL);
-	printf("rows:%i\n", rows);
 	while (i < rows)
 	{
 		j = 0;
@@ -38,7 +37,7 @@ char	**replace_spaces(char **map, int max, int rows)
 	return (nmap);
 }
 
-int	 get_maxlen(char **map)
+int	get_maxlen(char **map)
 {
 	int	max;
 	int	len;
@@ -46,9 +45,6 @@ int	 get_maxlen(char **map)
 
 	max = 0;
 	i = 0;
-	// (*rows_len) = malloc(sizeof(int) * rows);
-	// if (!rows_len)
-	// 	return (0);
 	while (map[i])
 	{
 		len = ft_strlen(map[i]);

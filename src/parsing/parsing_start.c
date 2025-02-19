@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_start.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 16:59:07 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/18 16:59:07 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/utils.h"
 
 void	init_txtr(t_txtr *newtxt)
@@ -20,7 +32,6 @@ void	init_structs(t_game_data **initData)
 
 bool	parsing(char *path, t_game_data **initData)
 {
-	// t_game_data	*initData;
 	int			fd;
 	char		*map_line;
 
@@ -33,11 +44,9 @@ bool	parsing(char *path, t_game_data **initData)
 	fd = open(path, O_RDONLY);
 	if (parse_textures(fd, *initData, &map_line))
 	{
-		printf("Parsing textures:parsed all init data\n");
 		if (parse_map(path, fd, *initData, map_line))
 		{
 			close(fd);
-			// print_parsed_map((*initData)->mapLines);
 			return (true);
 		}
 		else
@@ -45,16 +54,12 @@ bool	parsing(char *path, t_game_data **initData)
 	}
 	else
 		printf("Parsing textures: did not parse textures\n");
-	printf("closing fd\n");
 	close(fd);
-	printf("closed fd\n");
 	if (map_line)
 	{
 		printf("map line\n");
 		printf("cleaning remaining map line^%s\n", map_line);
 		free(map_line);
 	}
-	printf("exiting parsing\n");
 	return (false);
 }
-

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_dbg.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 17:09:28 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/18 17:09:52 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/utils.h"
 
 void	print_parsed_textures(t_parsed_lines *initLines)
 {
-	t_parsed_lines *cplst;
+	t_parsed_lines	*cplst;
 
 	printf("\n		~Parsed initList~	 \n");
 	if (!initLines)
@@ -18,20 +30,20 @@ void	print_parsed_textures(t_parsed_lines *initLines)
 	}
 }
 
-void	print_parsed_map(char **mapLines)
-{
-	int	i;
+// void	print_parsed_map(char **mapLines)
+// {
+// 	int	i;
 
-	i = 0;
-	printf("\n		~Parsed mapLines~	 \n");
-	if (!mapLines)
-	{
-		printf("	*** Empty mapLines ***\n");
-		return ;
-	}
-	while (mapLines[i] != NULL)
-	{
-		printf("%s$", mapLines[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	printf("\n		~Parsed mapLines~	 \n");
+// 	if (!mapLines)
+// 	{
+// 		printf("	*** Empty mapLines ***\n");
+// 		return ;
+// 	}
+// 	while (mapLines[i] != NULL)
+// 	{
+// 		printf("%s$", mapLines[i]);
+// 		i++;
+// 	}
+// }

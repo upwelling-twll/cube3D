@@ -1,25 +1,24 @@
- #include "../../inc/execution.h"
-# define SPEED	0.07f
-# define ROTATE 0.07f
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/17 18:57:50 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/18 16:49:02 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-bool	is_free_space(char **map, float x, float y)
+#include "../../inc/execution.h"
+#define SPEED 0.07f
+#define ROTATE 0.07f
+
+void	changed_position(t_game_data *data, float x, float y)
 {
-	float x1;
-	float y1;
-
-	x1 = x + SPEED + 0.5*SPEED;
-	y1 = y + SPEED + 0.5*SPEED;
-	if (map[(int)y1][(int)x1] == '0')
-		return (true);
-	else
-		return (false);
-}
-
-void changed_position(t_game_data *data, float x, float y)
-{
-	if (is_free_space(data->mapLines, data->sp_x, y) )
+	if (is_free_space(data->maplines, data->sp_x, y))
 		data->sp_x = x;
-	if (is_free_space(data->mapLines, x, data->sp_y))
+	if (is_free_space(data->maplines, x, data->sp_y))
 		data->sp_y = y;
 	draw_map(&data);
 }
@@ -60,8 +59,6 @@ void	move(t_game_data **data, int direc)
 
 int	key_hook(int keycode, t_game_data **data)
 {
-	// mlx_clear_window((*data)->mlx, (*data)->win_ptr);
-	printf("key pressed:%i\n", keycode);
 	if (keycode == ESC)
 		destroy_prog(*data);
 	if (keycode == W)
@@ -78,6 +75,7 @@ int	key_hook(int keycode, t_game_data **data)
 		rotate(124, *data);
 	return (0);
 }
+
 int	rotate(int keycode, t_game_data *data)
 {
 	if (keycode == RIGHT)

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_start.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 16:57:00 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/18 16:57:00 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/validation.h"
 
 bool	valid_map(t_game_data **idata)
 {
-	if (!idata || !is_valid_map(idata, (*idata)->mapLines))
+	if (!idata || !is_valid_map(idata, (*idata)->maplines))
 	{
 		return (false);
 	}
@@ -22,15 +34,15 @@ int	is_valid_elem(t_parsed_lines *pline, t_game_data **idata)
 		return (0);
 	cpline += ft_strlen(etype);
 	cpline = skip_tab_spaces(cpline);
-	if (ft_strlen(etype) == 2 && (correct_path(cpline))) //for WE, EA, SO,NO
+	if (ft_strlen(etype) == 2 && (correct_path(cpline)))
 	{
 		if (!save_txtr(idata, cpline, etype))
 			return (0);
 	}
-	else if (ft_strlen(etype) == 1 && (correct_colours(cpline))) //for F and C
+	else if (ft_strlen(etype) == 1 && (correct_colours(cpline)))
 	{
 		if (!save_rgb(idata, cpline, etype))
-			return (false);	
+			return (false);
 	}
 	else
 		return (0);
@@ -42,10 +54,10 @@ bool	valid_elements(t_game_data **idata)
 	int				i;
 	int				nelem;
 	t_parsed_lines	*line;
-	
+
 	nelem = 6;
 	i = 0;
-	line = *(*idata)->initLines;
+	line = *(*idata)->initlines;
 	while (line)
 	{
 		i += is_valid_elem(line, idata);
@@ -58,8 +70,7 @@ bool	valid_elements(t_game_data **idata)
 
 bool	validation(t_game_data **idata)
 {
-	printf("validation start\n");
-	if (!(*idata) || !((*idata)->initLines) || !((*idata)->mapLines))
+	if (!(*idata) || !((*idata)->initlines) || !((*idata)->maplines))
 	{
 		printf("validation:no init data or lines or map\n");
 		return (false);
@@ -69,7 +80,6 @@ bool	validation(t_game_data **idata)
 		printf("validation: validating elements failed\n");
 		return (false);
 	}
-	printf("	~All elements are valid~\n");
 	if (!valid_map(idata))
 	{
 		printf("validation: validating map failed\n");

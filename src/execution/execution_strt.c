@@ -1,16 +1,16 @@
-#include "../../inc/execution.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution_strt.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/17 19:04:19 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/17 19:04:19 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	get_angle(t_game_data **iData, char c)
-{
-	if (c == 'N')
-		(*iData)->angle = 0.5f * PI;
-	if (c == 'S')
-		(*iData)->angle = -0.5f * PI;
-	if (c == 'E')
-		(*iData)->angle = 0.0f * PI;
-	if (c == 'W')
-		(*iData)->angle = 1.0f * PI;
-}
+#include "../../inc/execution.h"
 
 void	get_spawn_posit(t_game_data **iData)
 {
@@ -18,17 +18,16 @@ void	get_spawn_posit(t_game_data **iData)
 	int	y;
 
 	y = 0;
-	while ((*iData)->mapLines[y])
+	while ((*iData)->maplines[y])
 	{
 		x = 0;
-		while ((*iData)->mapLines[y][x])
+		while ((*iData)->maplines[y][x])
 		{
-			if (is_hero((*iData)->mapLines[y][x]))
+			if (is_hero((*iData)->maplines[y][x]))
 			{
 				(*iData)->sp_y = y + 0.5f;
 				(*iData)->sp_x = x + 0.5f;
-				get_angle(iData, (*iData)->mapLines[y][x]);
-				printf("hero spawn position : x=%f, y=%f\n", (*iData)->sp_x, (*iData)->sp_y);
+				get_angle(iData, (*iData)->maplines[y][x]);
 			}
 			x++;
 		}
@@ -39,10 +38,12 @@ void	get_spawn_posit(t_game_data **iData)
 
 bool	set_image(t_game_data **iData, t_txtr *texture)
 {
-	texture->img = mlx_xpm_file_to_image((*iData)->mlx, texture->path, &texture->width, &texture->height);
+	texture->img = mlx_xpm_file_to_image((*iData)->mlx, texture->path,
+			&texture->width, &texture->height);
 	if (!texture->img)
 		return (print_message("Problem reading texture file"), false);
-	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp, &texture->line_len, &texture->endian);
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
+			&texture->line_len, &texture->endian);
 	return (true);
 }
 
@@ -61,14 +62,12 @@ bool	init_sources(t_game_data **iData)
 
 int	destroy_prog(t_game_data *iData)
 {
-	printf("Destroy programm\n");
 	if (iData->win_ptr)
 		mlx_destroy_window(iData->mlx, iData->win_ptr);
 	mlx_destroy_image(iData->mlx, iData->no_path.img);
 	mlx_destroy_image(iData->mlx, iData->so_path.img);
 	mlx_destroy_image(iData->mlx, iData->we_path.img);
 	mlx_destroy_image(iData->mlx, iData->ea_path.img);
-	exit_program("Exiting program from destroy program\n", iData);
 	exit (1);
 }
 
@@ -78,9 +77,9 @@ bool	execute(t_game_data **iData)
 	(*iData)->mlx = mlx_init();
 	if (!init_sources(iData))
 		return (print_message("execution: failed init sources"), false);
-	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H, "Cube_3D");
+	(*iData)->win_ptr = mlx_new_window((*iData)->mlx,
+			WINDOW_W, WINDOW_H, "Cube_3D");
 	draw_map(iData);
-	printf("draw map done\n");
 	mlx_hook((*iData)->win_ptr, 2, 0, key_hook, iData);
 	mlx_hook((*iData)->win_ptr, 17, 0, &destroy_prog, *iData);
 	mlx_loop((*iData)->mlx);

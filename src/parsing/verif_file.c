@@ -58,15 +58,12 @@ bool	verify_file(char *input)
 		if (correct_file_type(input, ".cub"))
 		{
 			if (good_file(input))
-			{
-				print_message("File is successfully verified");
 				return (true);
-			}
 			else
 				print_error(NULL, "File verification: open file error");
 		}
 		else
-			print_error(NULL, "File verification: incorrect file type. Expecting .cub");
+			print_error(NULL, "File verification: Expecting: .cub");
 	}
 	return (false);
 }
