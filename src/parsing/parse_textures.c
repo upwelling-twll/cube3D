@@ -45,15 +45,15 @@ int search_elements(char *line, t_game_data *initData, int pe)
 	if (pe == 0)
 	{
 		// printf("initLines NULL\n");
-		if (!((*initData->initLines)->line = ft_strdup(line)))
+		if (!((*initData->initlines)->line = ft_strdup(line)))
 		{
-			if ((*initData->initLines))
-				free((*initData->initLines));
+			if ((*initData->initlines))
+				free((*initData->initlines));
 			return (0);
 		}
-		else if ((*initData->initLines)->line != NULL)
+		else if ((*initData->initlines)->line != NULL)
 		{
-			(*initData->initLines)->next = NULL;
+			(*initData->initlines)->next = NULL;
 			return (1);
 		}
 	}
@@ -65,11 +65,11 @@ int search_elements(char *line, t_game_data *initData, int pe)
 		if (!new)
 			return (0);
 		new->next = NULL;
-		(ft_lstlast_pl((*initData->initLines)))->next = new;
-		if (!((ft_lstlast_pl((*initData->initLines))->line = ft_strdup(line))))
+		(ft_lstlast_pl((*initData->initlines)))->next = new;
+		if (!((ft_lstlast_pl((*initData->initlines))->line = ft_strdup(line))))
 		{
-				if (initData->initLines)
-					clean_elem_lines(initData->initLines);
+				if (initData->initlines)
+					clean_elem_lines(initData->initlines);
 				return (0);
 		}
 		else
@@ -87,12 +87,12 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 
 	minimum_elements = 6;
 	parsed_elements = 0;
-	initData->initLines = (t_parsed_lines**)malloc(sizeof(t_parsed_lines*));
-	*(initData->initLines) = (t_parsed_lines*)malloc(sizeof(t_parsed_lines));
-	(*initData->initLines)->next = NULL;
-	(*initData->initLines)->line = NULL;
-	(*initData->initLines)->id = 1;
-	head = *initData->initLines;
+	initData->initlines = (t_parsed_lines**)malloc(sizeof(t_parsed_lines*));
+	*(initData->initlines) = (t_parsed_lines*)malloc(sizeof(t_parsed_lines));
+	(*initData->initlines)->next = NULL;
+	(*initData->initlines)->line = NULL;
+	(*initData->initlines)->id = 1;
+	head = *initData->initlines;
 	line = skip_empty_lines(fd);
 	while (line && !is_eof(*line) && parsed_elements < minimum_elements)
 	{
@@ -100,7 +100,7 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 		if (line)
 			free(line);
 		line = skip_empty_lines(fd);
-		*(initData->initLines) = head;
+		*(initData->initlines) = head;
 	}
 	if (parsed_elements < minimum_elements || ft_lstsize_pl(head) < 6)
 	{

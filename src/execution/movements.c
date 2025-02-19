@@ -17,9 +17,9 @@ bool	is_free_space(char **map, float x, float y)
 
 void changed_position(t_game_data *data, float x, float y)
 {
-	if (is_free_space(data->mapLines, data->sp_x, y) )
+	if (is_free_space(data->maplines, data->sp_x, y) )
 		data->sp_x = x;
-	if (is_free_space(data->mapLines, x, data->sp_y))
+	if (is_free_space(data->maplines, x, data->sp_y))
 		data->sp_y = y;
 	draw_map(&data);
 }

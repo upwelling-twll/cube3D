@@ -1,23 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_elem_utils.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 17:26:29 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/19 17:32:57 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/validation.h"
 
-bool	is_comma(char c)
-{
-	if (c == ',')
-		return (true);
-	else
-		return (false);
-}
-
-char*	skip_comma(char *line)
-{
-	if (!(is_end_of_line(*line)))
-	{
-		line++;
-	}
-	return (line);
-}
-
-char*	skip_digits(char *line)
+char	*skip_digits(char *line)
 {
 	if (!is_end_of_line(*line))
 	{
@@ -44,7 +39,7 @@ bool	save_txt_data(t_txtr *elem, char *path, char *type)
 int	is_etoken_len(char *line)
 {
 	int	i;
-	
+
 	i = 0;
 	line = skip_tab_spaces(line);
 	while (line[i] && !(is_tab_or_space(line[i])))

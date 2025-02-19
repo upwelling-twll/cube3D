@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 17:24:31 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/19 17:26:13 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/utils.h"
 
 bool	token_found(char *search, char *input)
@@ -5,7 +17,7 @@ bool	token_found(char *search, char *input)
 	if (search && input)
 	{
 		if (ft_strncmp(search, input, ft_strlen(search)))
-			return(false);
+			return (false);
 		else
 			return (true);
 	}
@@ -27,14 +39,10 @@ void	move_line(int value, char **line)
 		*line = *(line + 3);
 }
 
-void	clean_initData(t_game_data *initData)
+void	clean_initdata(t_game_data *initData)
 {
 	if (!initData)
 		return ;
-	// if (initData->floor)
-	// 	free(initData->floor);
-	// if (initData->celling)
-	// 	free(initData->celling);
 	free(initData);
 	printf("cleaned initData");
 }
@@ -51,7 +59,7 @@ bool	is_empty_line(char *line)
 	while (i < len && (line[i] == ' ' || line[i] == '\n' || line[i] == '\t'))
 		i++;
 	if (line[i] == '\0')
-		return(true);
+		return (true);
 	else
 		return (false);
 }
@@ -65,7 +73,6 @@ char	*skip_empty_lines(int fd)
 	{
 		while (is_empty_line(line) == true)
 		{
-			// printf("had empty line:%s$\n", line);
 			if (line)
 				free(line);
 			line = get_next_line(fd);

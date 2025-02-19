@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 17:19:55 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/19 17:20:11 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXECUTION_H
 # define EXECUTION_H
 
@@ -18,13 +30,13 @@
 # define RIGHT	124
 # define ESC	53
 
-typedef	struct s_vec
+typedef struct s_vec
 {
 	float	x;
 	float	y;
 }	t_vec;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	int		sx;
 	int		sy;
@@ -51,12 +63,12 @@ void	draw_map(t_game_data **data);
 bool	execute(t_game_data **iData);
 
 //execution_utils.c
-int				get_isign(float n);
+int		get_isign(float n);
 
 //movements.c
-int	key_hook(int keycode, t_game_data **data);
-int	rotate(int keycode, t_game_data *data);
+int		key_hook(int keycode, t_game_data **data);
+int		rotate(int keycode, t_game_data *data);
 
-int	destroy_prog(t_game_data *iData);
+int		destroy_prog(t_game_data *iData);
 
 #endif

@@ -18,16 +18,16 @@ void	get_spawn_posit(t_game_data **iData)
 	int	y;
 
 	y = 0;
-	while ((*iData)->mapLines[y])
+	while ((*iData)->maplines[y])
 	{
 		x = 0;
-		while ((*iData)->mapLines[y][x])
+		while ((*iData)->maplines[y][x])
 		{
-			if (is_hero((*iData)->mapLines[y][x]))
+			if (is_hero((*iData)->maplines[y][x]))
 			{
 				(*iData)->sp_y = y + 0.5f;
 				(*iData)->sp_x = x + 0.5f;
-				get_angle(iData, (*iData)->mapLines[y][x]);
+				get_angle(iData, (*iData)->maplines[y][x]);
 				printf("hero spawn position : x=%f, y=%f\n", (*iData)->sp_x, (*iData)->sp_y);
 			}
 			x++;

@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_map_edit.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 17:27:03 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/19 17:33:12 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/validation.h"
 
 char	**replace_spaces(char **map, int max, int rows)
 {
 	char	**nmap;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
-	nmap = malloc(sizeof(char *)* (rows + 1));
+	nmap = malloc(sizeof(char *) * (rows + 1));
 	if (!nmap)
 		return (NULL);
 	printf("rows:%i\n", rows);
@@ -38,7 +50,7 @@ char	**replace_spaces(char **map, int max, int rows)
 	return (nmap);
 }
 
-int	 get_maxlen(char **map)
+int	get_maxlen(char **map)
 {
 	int	max;
 	int	len;
@@ -46,9 +58,6 @@ int	 get_maxlen(char **map)
 
 	max = 0;
 	i = 0;
-	// (*rows_len) = malloc(sizeof(int) * rows);
-	// if (!rows_len)
-	// 	return (0);
 	while (map[i])
 	{
 		len = ft_strlen(map[i]);
@@ -57,4 +66,21 @@ int	 get_maxlen(char **map)
 		i++;
 	}
 	return (max);
+}
+
+bool	is_comma(char c)
+{
+	if (c == ',')
+		return (true);
+	else
+		return (false);
+}
+
+char	*skip_comma(char *line)
+{
+	if (!(is_end_of_line(*line)))
+	{
+		line++;
+	}
+	return (line);
 }

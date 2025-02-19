@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 17:20:31 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/19 17:21:43 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
 # define PARSING_H
 
-#include <stdbool.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
-typedef	struct s_parsed_lines
+typedef struct s_parsed_lines
 {
-	char	*line;
-	int		id;
+	char					*line;
+	int						id;
 
 	struct s_parsed_lines	*next;
 }		t_parsed_lines;
 
-typedef	struct s_rgb
+typedef struct s_rgb
 {
 	unsigned int	hcolour;
 
@@ -65,20 +77,18 @@ typedef struct s_game_data
 	float			txt_w;
 	t_txtr			cur_txt;
 
-	t_parsed_lines **initLines;
-	char			**mapLines;
+	t_parsed_lines	**initlines;
+	char			**maplines;
 	int				map_height;
 	int				map_widht;
 
-	float				sp_x;
-	float				sp_y;
-	float				angle;
-	// int				view;
-
+	float			sp_x;
+	float			sp_y;
+	float			angle;
 	void			*mlx;
 	void			*win_ptr;
 	t_img			img;
-} 		t_game_data;
+}		t_game_data;
 
 //verif_map.c
 
@@ -87,7 +97,7 @@ bool	good_file(char *file_path);
 
 //verif_file.c
 bool	verify_file_xpm(char *input);
-bool 	verify_file_cub(char *input);
+bool	verify_file_cub(char *input);
 bool	correct_file_type(char *input, char *type);
 bool	verify_file(char *input);
 

@@ -2,7 +2,7 @@
 
 bool	valid_map(t_game_data **idata)
 {
-	if (!idata || !is_valid_map(idata, (*idata)->mapLines))
+	if (!idata || !is_valid_map(idata, (*idata)->maplines))
 	{
 		return (false);
 	}
@@ -45,7 +45,7 @@ bool	valid_elements(t_game_data **idata)
 	
 	nelem = 6;
 	i = 0;
-	line = *(*idata)->initLines;
+	line = *(*idata)->initlines;
 	while (line)
 	{
 		i += is_valid_elem(line, idata);
@@ -59,7 +59,7 @@ bool	valid_elements(t_game_data **idata)
 bool	validation(t_game_data **idata)
 {
 	printf("validation start\n");
-	if (!(*idata) || !((*idata)->initLines) || !((*idata)->mapLines))
+	if (!(*idata) || !((*idata)->initlines) || !((*idata)->maplines))
 	{
 		printf("validation:no init data or lines or map\n");
 		return (false);

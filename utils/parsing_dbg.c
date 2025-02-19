@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_dbg.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 17:24:14 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/19 17:24:19 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/utils.h"
 
 void	print_parsed_textures(t_parsed_lines *initLines)
 {
-	t_parsed_lines *cplst;
+	t_parsed_lines	*cplst;
 
 	printf("\n		~Parsed initList~	 \n");
 	if (!initLines)

@@ -31,18 +31,18 @@ bool	save_map(char *path, size_t nlines, t_game_data *data)
 	map_line = skip_textures(fd);
 	if (!map_line)
 		return (false);
-	data->mapLines = malloc(sizeof(char*) * (nlines + 1));
+	data->maplines = malloc(sizeof(char*) * (nlines + 1));
 	i = 0;
 	while (map_line && i < nlines)
 	{
-		data->mapLines[i] = ft_strdup(map_line);
+		data->maplines[i] = ft_strdup(map_line);
 		i++;
 		free(map_line);
 		map_line = get_next_line(fd);
 	}
 	if (map_line)
 		free(map_line);
-	data->mapLines[i] = NULL;
+	data->maplines[i] = NULL;
 	close(fd);
 	return (true);
 }
@@ -65,7 +65,7 @@ bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 	if (line)
 		free(line);
 	printf("Found %zu map lines to save\n", nlines);
-	if (!save_map(path, nlines, data) || !data->mapLines || data->mapLines[0] == NULL)
+	if (!save_map(path, nlines, data) || !data->maplines || data->maplines[0] == NULL)
 		print_message("Could not save map\n");
 	else
 		printf("Saved %zu map lines\n", nlines);

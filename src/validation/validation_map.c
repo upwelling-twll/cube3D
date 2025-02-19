@@ -58,8 +58,8 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	int		max_len;
 
 	max_len = 0;
-	map = (*idata)->mapLines;
-	if (!idata || !(*idata)->mapLines)
+	map = (*idata)->maplines;
+	if (!idata || !(*idata)->maplines)
 		return (false);
 	max_len = get_maxlen(map);
 	if (!max_len)
@@ -71,8 +71,8 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	if (!nmap)
 		return (false);
 	print_validation_map(nmap, "Replaced sp to 'x'");
-	clean_map((*idata)->mapLines);
-	(*idata)->mapLines = nmap;
+	clean_map((*idata)->maplines);
+	(*idata)->maplines = nmap;
 	return (true);
 }
 
@@ -101,13 +101,13 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	nmap = remove_last_nlsp(idata);
 	if (!nmap)
 		return (print_message("map error: after removing last nlsp"), false);
-	 print_validation_map((*idata)->mapLines, "Removed exptra nlsp");
-	lnum = get_array_size((*idata)->mapLines);
+	 print_validation_map((*idata)->maplines, "Removed exptra nlsp");
+	lnum = get_array_size((*idata)->maplines);
 	if (!is_wall(nmap[lnum - 1]) ) // 
 		return (print_message("walls check failed"), false);
 	if (!(replace_sp_to_x(idata, lnum)))
 		return (print_message("replacing 'spaces' to 'x' error"), false);
-	if  (!check_walls((*idata)->mapLines, (*idata)->map_height, (*idata)->map_widht))
+	if  (!check_walls((*idata)->maplines, (*idata)->map_height, (*idata)->map_widht))
 		return (print_message("Spaces check failed"), false);
 	return (print_message("Validation: is_valid_map OK"), true);
 }	
