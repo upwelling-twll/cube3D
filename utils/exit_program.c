@@ -6,7 +6,7 @@
 /*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:23:57 by ssiddiqu          #+#    #+#             */
-/*   Updated: 2025/02/19 17:34:30 by ssiddiqu         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:52:00 by ssiddiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	clean_textures(t_game_data *data)
 
 int	exit_program(char *text, t_game_data *initData)
 {
-	printf("exit program\n");
 	if (text)
 		printf("%s\n", text);
 	if (initData && initData->initlines)

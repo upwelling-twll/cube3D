@@ -6,7 +6,7 @@
 /*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:27:03 by ssiddiqu          #+#    #+#             */
-/*   Updated: 2025/02/19 17:33:12 by ssiddiqu         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:44:00 by ssiddiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	**replace_spaces(char **map, int max, int rows)
 	nmap = malloc(sizeof(char *) * (rows + 1));
 	if (!nmap)
 		return (NULL);
-	printf("rows:%i\n", rows);
 	while (i < rows)
 	{
 		j = 0;

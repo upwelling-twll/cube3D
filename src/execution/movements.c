@@ -60,8 +60,6 @@ void	move(t_game_data **data, int direc)
 
 int	key_hook(int keycode, t_game_data **data)
 {
-	// mlx_clear_window((*data)->mlx, (*data)->win_ptr);
-	printf("key pressed:%i\n", keycode);
 	if (keycode == ESC)
 		destroy_prog(*data);
 	if (keycode == W)
@@ -78,6 +76,7 @@ int	key_hook(int keycode, t_game_data **data)
 		rotate(124, *data);
 	return (0);
 }
+
 int	rotate(int keycode, t_game_data *data)
 {
 	if (keycode == RIGHT)

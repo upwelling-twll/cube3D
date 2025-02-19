@@ -113,7 +113,6 @@ bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 	if (line)
 	{
 		*map_line = ft_strdup(line);
-		printf("have rem map line:%s$\n", *map_line);
 		free(line);
 	}
 	return (true);

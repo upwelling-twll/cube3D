@@ -87,7 +87,7 @@ bool	raycasting(t_game_data **idata)
 	float	v;
 	int		x;
 
-	print_validation_map((*idata)->maplines, "Execution ");
+	// print_validation_map((*idata)->maplines, "Execution ");
 	v = (*idata)->angle - FOV / 2;
 	dv = FOV / (WINDOW_W - 1);
 	x = -1;
@@ -96,5 +96,6 @@ bool	raycasting(t_game_data **idata)
 		set_line((*idata), x, set_ray((*idata), v) * cos((*idata)->angle - v));
 		v = v + dv;
 	}
-	return (print_message("raycasting exit\n"), true);
+	// return (print_message("raycasting exit\n"), true);
+	return (true);
 }
