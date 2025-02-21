@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_start.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:48:34 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:48:46 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/validation.h"
 
 bool	valid_map(t_game_data **idata)
@@ -22,15 +34,15 @@ int	is_valid_elem(t_parsed_lines *pline, t_game_data **idata)
 		return (0);
 	cpline += ft_strlen(etype);
 	cpline = skip_tab_spaces(cpline);
-	if (ft_strlen(etype) == 2 && (correct_path(cpline))) //for WE, EA, SO,NO
+	if (ft_strlen(etype) == 2 && (correct_path(cpline)))
 	{
 		if (!save_txtr(idata, cpline, etype))
 			return (0);
 	}
-	else if (ft_strlen(etype) == 1 && (correct_colours(cpline))) //for F and C
+	else if (ft_strlen(etype) == 1 && (correct_colours(cpline)))
 	{
 		if (!save_rgb(idata, cpline, etype))
-			return (false);	
+			return (false);
 	}
 	else
 		return (0);
@@ -42,7 +54,7 @@ bool	valid_elements(t_game_data **idata)
 	int				i;
 	int				nelem;
 	t_parsed_lines	*line;
-	
+
 	nelem = 6;
 	i = 0;
 	line = *(*idata)->initlines;

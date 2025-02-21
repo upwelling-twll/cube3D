@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_start.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:43:57 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:44:05 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/utils.h"
 
 void	init_txtr(t_txtr *newtxt)
@@ -20,9 +32,8 @@ void	init_structs(t_game_data **initData)
 
 bool	parsing(char *path, t_game_data **initData)
 {
-	// t_game_data	*initData;
-	int			fd;
-	char		*map_line;
+	int		fd;
+	char	*map_line;
 
 	if (!path)
 		return (false);
@@ -36,7 +47,6 @@ bool	parsing(char *path, t_game_data **initData)
 		if (parse_map(path, fd, *initData, map_line))
 		{
 			close(fd);
-			// print_parsed_map((*initData)->mapLines);
 			return (true);
 		}
 		else
@@ -54,4 +64,3 @@ bool	parsing(char *path, t_game_data **initData)
 	printf("exiting parsing\n");
 	return (false);
 }
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:42:40 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:42:56 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/utils.h"
 
 char	*skip_textures(int fd)
@@ -21,9 +33,9 @@ char	*skip_textures(int fd)
 
 bool	save_map(char *path, size_t nlines, t_game_data *data)
 {
-	int	fd;
+	int		fd;
 	char	*map_line;
-	size_t		i;
+	size_t	i;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
@@ -31,7 +43,7 @@ bool	save_map(char *path, size_t nlines, t_game_data *data)
 	map_line = skip_textures(fd);
 	if (!map_line)
 		return (false);
-	data->maplines = malloc(sizeof(char*) * (nlines + 1));
+	data->maplines = malloc(sizeof(char *) * (nlines + 1));
 	i = 0;
 	while (map_line && i < nlines)
 	{
@@ -47,7 +59,7 @@ bool	save_map(char *path, size_t nlines, t_game_data *data)
 	return (true);
 }
 
-bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
+bool	go_through_map(char *path, int fd, char *line, t_game_data *data)
 {
 	size_t	nlines;
 
@@ -62,7 +74,8 @@ bool	go_through_map(char *path, int fd, char *line, t_game_data* data)
 	close(fd);
 	if (line)
 		free(line);
-	if (!save_map(path, nlines, data) || !data->maplines || data->maplines[0] == NULL)
+	if (!save_map(path, nlines, data) || !data->maplines
+		|| data->maplines[0] == NULL)
 		print_message("Could not save map\n");
 	return (true);
 }

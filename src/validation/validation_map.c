@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_map.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:48:27 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:48:28 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/validation.h"
 
 bool	has_one_hero(char **lmap)
@@ -10,7 +22,7 @@ bool	has_one_hero(char **lmap)
 	i = 0;
 	j = 0;
 	if (!lmap)
-		return (false);	
+		return (false);
 	while (lmap[i])
 	{
 		j = 0;
@@ -41,9 +53,9 @@ bool	is_wall(char *line)
 		if (line[i] == '1')
 			wall++;
 		if (line[i] == '\n' && wall == 0)
-			return (print_message("last map line is NOT wall"),false);
+			return (print_message("last map line is NOT wall"), false);
 		if (line [i] != '1' && line[i] != ' ' && line[i] != '\n')
-			return (print_message("last map line is NOT wall"),false);
+			return (print_message("last map line is NOT wall"), false);
 		i++;
 	}
 	if (wall > 0)
@@ -69,7 +81,6 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	nmap = replace_spaces(map, max_len, rows);
 	if (!nmap)
 		return (false);
-	// print_validation_map(nmap, "Replaced sp to 'x'");
 	clean_map((*idata)->maplines);
 	(*idata)->maplines = nmap;
 	return (true);
@@ -99,12 +110,12 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	if (!nmap)
 		return (print_message("map error: after removing last nlsp"), false);
 	lnum = get_array_size((*idata)->maplines);
-	if (!is_wall(nmap[lnum - 1]) ) // 
+	if (!is_wall(nmap[lnum - 1]))
 		return (print_message("walls check failed"), false);
 	if (!(replace_sp_to_x(idata, lnum)))
 		return (print_message("replacing 'spaces' to 'x' error"), false);
-	if  (!check_walls((*idata)->maplines, (*idata)->map_height, (*idata)->map_widht))
+	if (!check_walls((*idata)->maplines, (*idata)->map_height,
+			(*idata)->map_widht))
 		return (print_message("Spaces check failed"), false);
-	// return (print_message("Validation: is_valid_map OK"), true);
 	return (true);
 }

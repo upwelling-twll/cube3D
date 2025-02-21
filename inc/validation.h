@@ -6,7 +6,7 @@
 /*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:32:04 by ssiddiqu          #+#    #+#             */
-/*   Updated: 2025/02/19 17:32:08 by ssiddiqu         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:59:20 by ssiddiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ bool	is_valid_map(t_game_data **idata, char **lmap);
 bool	save_txtr(t_game_data **idata, char *path, char *type);
 bool	correct_path(char *line);
 bool	correct_colours(char *cpline);
-char	*set_colour(char *line, int *rgb_compon);
-bool	save_rgb(t_game_data **idata, char *line, char *type);
 bool	is_unique(t_game_data **d, char *t);
 bool	is_etoken(char *cpline, char **etype);
 
@@ -45,5 +43,9 @@ bool	valid_map(t_game_data **idata);
 int		is_valid_elem(t_parsed_lines *pline, t_game_data **idata);
 bool	valid_elements(t_game_data **idata);
 bool	validation(t_game_data **idata);
+
+//validation_colours.c
+char	*set_colour(char *line, int *rgb_compon);
+bool	save_rgb(t_game_data **idata, char *line, char *type);
 
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   verif_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:51:24 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:51:29 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/utils.h"
 
 bool	verify_file_xpm(char *input)
@@ -24,7 +36,7 @@ bool	verify_file_xpm(char *input)
 	return (false);
 }
 
-bool 	verify_file_cub(char *input)
+bool	verify_file_cub(char *input)
 {
 	size_t	len;
 

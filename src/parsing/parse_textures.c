@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_textures.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:43:00 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:43:40 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/utils.h"
 
 void	clean_line(char *line)
@@ -10,7 +22,7 @@ void	clean_line(char *line)
 
 int	ft_lstsize_pl(t_parsed_lines *lst)
 {
-	int		i;
+	int				i;
 	t_parsed_lines	*next;
 
 	if (lst == NULL)
@@ -40,11 +52,10 @@ t_parsed_lines	*ft_lstlast_pl(t_parsed_lines *lst)
 	return (lst);
 }
 
-int search_elements(char *line, t_game_data *initData, int pe)
+int	search_elements(char *line, t_game_data *initData, int pe)
 {
 	if (pe == 0)
 	{
-		// printf("initLines NULL\n");
 		if (!((*initData->initlines)->line = ft_strdup(line)))
 		{
 			if ((*initData->initlines))
@@ -80,9 +91,9 @@ int search_elements(char *line, t_game_data *initData, int pe)
 
 bool	parse_textures(int fd, t_game_data *initData, char **map_line)
 {
-	char	*line;
-	int		parsed_elements;
-	int		minimum_elements;
+	char		*line;
+	int			parsed_elements;
+	int			minimum_elements;
 	t_parsed_lines	*head;
 
 	minimum_elements = 6;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_elem.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:46:51 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:57:36 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/validation.h"
 
 char	*remove_back_spaces(char *input)
@@ -25,7 +37,6 @@ char	*remove_back_spaces(char *input)
 	return (path);
 }
 
-
 bool	correct_path(char *line)
 {
 	char	*cpline;
@@ -44,8 +55,8 @@ bool	correct_path(char *line)
 
 bool	correct_colours(char *cpline)
 {
-	int	i;
-	int	colour;
+	int		i;
+	int		colour;
 	char	*line;
 
 	i = 0;
@@ -55,13 +66,13 @@ bool	correct_colours(char *cpline)
 		return (false);
 	while (i < 3 && *line)
 	{
-		colour = ft_atoi(line); //check is digit
+		colour = ft_atoi(line);
 		if (colour < 0 || colour > 255)
 			return (false);
 		i++;
 		line = skip_digits(line);
 		if (i == 3)
-			break;
+			break ;
 		line = skip_tab_spaces(line);
 		if (line && is_comma(*line))
 			line = skip_comma(line);
@@ -94,43 +105,6 @@ bool	save_txtr(t_game_data **idata, char *path, char *type)
 	return (false);
 }
 
-char	*set_colour(char *line, int *rgb_compon)
-{
-	int	n;
-
-	if (!line)
-		return(NULL);
-	n = ft_atoi(line);
-	*rgb_compon = n;
-	line = skip_digits(line);
-	line = skip_comma(line);
-	line = skip_tab_spaces(line);
-	return (line);
-}
-
-bool	save_rgb(t_game_data **idata, char *line, char *type)
-{
-	if (!(*idata) || !line || !type)
-		return (false);
-	if (ft_strncmp(type, "F", 1) == 0)
-	{
-		line = set_colour(line, &(*idata)->floor.red);
-		line = set_colour(line, &(*idata)->floor.green);
-		line = set_colour(line, &(*idata)->floor.blue);
-		(*idata)->floor.status = true;
-		return (true);
-	}
-	else if (ft_strncmp(type, "C", 1) == 0)
-	{
-		line = set_colour(line, &(*idata)->celling.red);
-		line = set_colour(line, &(*idata)->celling.green);
-		line = set_colour(line, &(*idata)->celling.blue);
-		(*idata)->celling.status = true;
-		return (true);
-	}
-	return (false);
-}
-
 bool	is_unique(t_game_data **d, char *t)
 {
 	if (!ft_strncmp(t, "NO", 2) && (*d)->no_path.status == true)
@@ -155,17 +129,17 @@ bool	is_etoken(char *cpline, char **etype)
 	int		etlen;
 
 	types[0] = "NO";
-    types[1] = "SO";
-    types[2] = "WE";
-    types[3] = "EA";
-    types[4] = "F";
-    types[5] = "C";
+	types[1] = "SO";
+	types[2] = "WE";
+	types[3] = "EA";
+	types[4] = "F";
+	types[5] = "C";
 	etlen = 0;
 	if (!cpline || is_eof(*cpline) || is_empty_line(cpline))
 		return (false);
 	etlen = is_etoken_len(cpline);
 	if (etlen == 2)
-		*etype = is_texture(cpline, types); 
+		*etype = is_texture(cpline, types);
 	else if (etlen == 1)
 		*etype = is_rgb(cpline, types);
 	else

@@ -1,16 +1,16 @@
-#include "../../inc/execution.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution_strt.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:37:17 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:50:49 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	get_angle(t_game_data **iData, char c)
-{
-	if (c == 'N')
-		(*iData)->angle = 0.5f * PI;
-	if (c == 'S')
-		(*iData)->angle = -0.5f * PI;
-	if (c == 'E')
-		(*iData)->angle = 0.0f * PI;
-	if (c == 'W')
-		(*iData)->angle = 1.0f * PI;
-}
+#include "../../inc/execution.h"
 
 void	get_spawn_posit(t_game_data **iData)
 {
@@ -38,10 +38,12 @@ void	get_spawn_posit(t_game_data **iData)
 
 bool	set_image(t_game_data **iData, t_txtr *texture)
 {
-	texture->img = mlx_xpm_file_to_image((*iData)->mlx, texture->path, &texture->width, &texture->height);
+	texture->img = mlx_xpm_file_to_image((*iData)->mlx, texture->path,
+			&texture->width, &texture->height);
 	if (!texture->img)
 		return (print_message("Problem reading texture file"), false);
-	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp, &texture->line_len, &texture->endian);
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
+			&texture->line_len, &texture->endian);
 	return (true);
 }
 
@@ -66,7 +68,6 @@ int	destroy_prog(t_game_data *iData)
 	mlx_destroy_image(iData->mlx, iData->so_path.img);
 	mlx_destroy_image(iData->mlx, iData->we_path.img);
 	mlx_destroy_image(iData->mlx, iData->ea_path.img);
-	// exit_program("Exiting program from destroy program\n", iData);
 	exit_program("Exiting program from destroy program\n", iData);
 	exit (1);
 }
@@ -77,7 +78,8 @@ bool	execute(t_game_data **iData)
 	(*iData)->mlx = mlx_init();
 	if (!init_sources(iData))
 		return (print_message("execution: failed init sources"), false);
-	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H, "Cube_3D");
+	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H,
+			"Cube_3D");
 	draw_map(iData);
 	mlx_hook((*iData)->win_ptr, 2, 0, key_hook, iData);
 	mlx_hook((*iData)->win_ptr, 17, 0, &destroy_prog, *iData);

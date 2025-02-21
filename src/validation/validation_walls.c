@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation_walls.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/21 17:49:22 by ssiddiqu          #+#    #+#             */
+/*   Updated: 2025/02/21 17:49:39 by ssiddiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/validation.h"
 
 char	get_last_nonspace(char *line)
 {
-	//todo;
 	if (!line)
 		return (line[0]);
 	return ('1');
@@ -10,17 +21,15 @@ char	get_last_nonspace(char *line)
 
 bool	has_space_around(char **map, int y, int x)
 {
-	//todo;
-	// printf("has_space_around check\n");
 	if (map[y][x])
 	{
-		if (map[y][x+1] == 'x')
+		if (map[y][x + 1] == 'x')
 			return (true);
-		else if (map[y][x-1] == 'x')
+		else if (map[y][x - 1] == 'x')
 			return (true);
-		else if (map[y+1][x] == 'x')
+		else if (map[y + 1][x] == 'x')
 			return (true);
-		else if (map[y-1][x] == 'x')
+		else if (map[y - 1][x] == 'x')
 			return (true);
 	}
 	return (false);
@@ -28,7 +37,6 @@ bool	has_space_around(char **map, int y, int x)
 
 bool	on_eage(int y, int x, int height, int widht)
 {
-	// printf("start on eage\n");
 	if (y == 0 || y >= height)
 		return (print_message("0 on eage"), true);
 	else if (x == 0 || x >= widht)
@@ -44,11 +52,8 @@ bool	check_walls(char **map, int height, int widht)
 
 	i = 0;
 	j = 0;
-	//todo
-	// printf("function check_walls:STUB\n");
 	while (map[i])
 	{
-		// printf("check wall, line:%s\n", map[i]);
 		j = 0;
 		while (map[i][j] != '\0')
 		{
@@ -64,5 +69,5 @@ bool	check_walls(char **map, int height, int widht)
 		}
 		i++;
 	}
-	return (true);	
+	return (true);
 }
