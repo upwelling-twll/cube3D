@@ -70,9 +70,9 @@ int	key_hook(int keycode, t_game_data **data)
 	if (keycode == D)
 		move(data, 1);
 	if (keycode == LEFT)
-		rotate(123, *data);
+		rotate(LEFT, *data);
 	if (keycode == RIGHT)
-		rotate(124, *data);
+		rotate(RIGHT, *data);
 	return (0);
 }
 
