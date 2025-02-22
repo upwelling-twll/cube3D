@@ -2,6 +2,8 @@
 
 bool	is_eof(char c)
 {
+	if (!c)
+		return (true);
 	if (c == '\0')
 		return (true);
 	else

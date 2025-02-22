@@ -8,9 +8,9 @@ void	print_message(char *text)
 int	print_error(char *data, char *text)
 {
 	if (data)
-		printf("%s. %s\n", data, text);
+		printf("ERROR: %s. %s\n", data, text);
 	else if (data == NULL)
-		printf("%s\n", text);
+		printf("ERROR: %s\n", text);
 	return (1);
 }
 

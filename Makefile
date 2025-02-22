@@ -31,6 +31,7 @@ ifeq ($(UNAME_S),Darwin) # MacOS
 else ifeq ($(UNAME_S),Linux) # Linux
     FLAGS += -I/usr/include -Imlx_linux
     LIBS += -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	
 endif
 
 %.o: %.c
