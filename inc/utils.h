@@ -62,6 +62,13 @@ bool			save_texture(char *type, char *line, t_game_data *initData);
 bool			is_empty_line(char *line);
 char			*skip_empty_lines(int fd);
 
+//parsing_txt_utils.c
+void			clean_line(char *line);
+int				ft_lstsize_pl(t_parsed_lines *lst);
+t_parsed_lines	*ft_lstlast_pl(t_parsed_lines *lst);
+int				start_list(char *line, t_game_data *initData);
+int				append_to_list(char *line, t_game_data *initData);
+
 //parse_map.c
 bool			parse_map(char *path, int fd, t_game_data *initData,
 					char *map_line);
