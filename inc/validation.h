@@ -21,7 +21,6 @@
 # include "../mlx/mlx.h"
 
 //validation_walls.c
-// bool	has_internal_walls(char **map);
 bool	check_walls(char **map, int height, int widht);
 
 //validation_map.c
@@ -30,6 +29,10 @@ bool	is_wall(char *line);
 bool	replace_sp_to_x(t_game_data **idata, int rows);
 bool	compare_maps(char **spmap, char **vmap);
 bool	is_valid_map(t_game_data **idata, char **lmap);
+
+//validation_str_helpers.c
+bool	is_comma(char c);
+char	*skip_comma(char *line);
 
 //validaiton_elem.c
 bool	save_txtr(t_game_data **idata, char *path, char *type);
