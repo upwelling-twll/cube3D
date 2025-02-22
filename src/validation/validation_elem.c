@@ -12,45 +12,18 @@
 
 #include "../../inc/validation.h"
 
-char	*remove_back_spaces(char *input)
+int	check_line(char **line, int i)
 {
-	int		len;
-	int		i;
-	char	*path;
-
-	i = 0;
-	len = ft_strlen(input);
-	while (i < len && !(is_tab_or_space(input[i])) && input[i] != '\n')
-		i++;
-	if (i < 4)
-		return (NULL);
-	path = malloc(sizeof(char) * i + 1);
-	if (!path)
-		return (NULL);
-	len = 0;
-	while (len < i)
-	{
-		path[len] = input[len];
-		len++;
-	}
-	path[len] = '\0';
-	return (path);
-}
-
-bool	correct_path(char *line)
-{
-	char	*cpline;
-
-	if (!line || is_eof(*line) || is_empty_line(line))
-		return (false);
-	cpline = remove_back_spaces(line);
-	if (cpline && verify_file_xpm(cpline))
-	{
-		free(cpline);
-		return (true);
-	}
-	free(cpline);
-	return (false);
+	*line = skip_digits(*line);
+	if (i == 3)
+		return (3);
+	*line = skip_tab_spaces(*line);
+	if (*line && is_comma(*line[0]))
+		*line = skip_comma(*line);
+	else
+		return (-1);
+	*line = skip_tab_spaces(*line);
+	return (i);
 }
 
 bool	correct_colours(char *cpline)
@@ -70,15 +43,11 @@ bool	correct_colours(char *cpline)
 		if (colour < 0 || colour > 255)
 			return (false);
 		i++;
-		line = skip_digits(line);
-		if (i == 3)
-			break ;
-		line = skip_tab_spaces(line);
-		if (line && is_comma(*line))
-			line = skip_comma(line);
-		else
+		i = check_line(&line, i);
+		if (i == -1)
 			return (false);
-		line = skip_tab_spaces(line);
+		else if (i == 3)
+			break ;
 	}
 	if (i == 3 && is_empty_line(line))
 		return (true);

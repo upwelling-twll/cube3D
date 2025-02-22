@@ -23,6 +23,10 @@
 //execution_utils.c
 bool			iswall(char c);
 
+//validation_txtfile_utils.c
+bool			correct_path(char *line);
+char			*remove_back_spaces(char *input);
+
 //validation_map_edit.c
 char			**replace_spaces(char **map, int max, int rows);
 int				get_maxlen(char **map);
