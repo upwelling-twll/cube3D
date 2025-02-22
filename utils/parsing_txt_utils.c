@@ -54,7 +54,8 @@ t_parsed_lines	*ft_lstlast_pl(t_parsed_lines *lst)
 
 int	start_list(char *line, t_game_data *initData)
 {
-	if (!((*initData->initlines)->line = ft_strdup(line)))
+	(*initData->initlines)->line = ft_strdup(line);
+	if (!((*initData->initlines)->line))
 	{
 		if ((*initData->initlines))
 			free((*initData->initlines));
@@ -70,14 +71,15 @@ int	start_list(char *line, t_game_data *initData)
 
 int	append_to_list(char *line, t_game_data *initData)
 {
-	t_parsed_lines *new;
+	t_parsed_lines	*new;
 
 	new = malloc(sizeof(t_parsed_lines));
 	if (!new)
 		return (0);
 	new->next = NULL;
 	(ft_lstlast_pl((*initData->initlines)))->next = new;
-	if (!((ft_lstlast_pl((*initData->initlines))->line = ft_strdup(line))))
+	ft_lstlast_pl((*initData->initlines))->line = ft_strdup(line);
+	if (!(ft_lstlast_pl((*initData->initlines))->line))
 	{
 		if (initData->initlines)
 			clean_elem_lines(initData->initlines);
