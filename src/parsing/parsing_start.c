@@ -28,6 +28,7 @@ void	init_structs(t_game_data **initData)
 	init_txtr(&(*initData)->ea_path);
 	(*initData)->floor.status = false;
 	(*initData)->celling.status = false;
+	(*initData)->maplines = NULL;
 }
 
 bool	parsing(char *path, t_game_data **initData)
@@ -39,6 +40,7 @@ bool	parsing(char *path, t_game_data **initData)
 		return (false);
 	*initData = malloc(sizeof(t_game_data));
 	init_structs(initData);
+	map_line = NULL;
 	if (!(*initData))
 		return (print_error(NULL, "Parsing:can not create initData"));
 	fd = open(path, O_RDONLY);
