@@ -20,16 +20,16 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		if (!verify_file(argv[1]))
-			return (exit_program("Verify file NOK\n exiting Cube3D", initdata));
+			return (exit_program("Error:Verify file NOK\n", initdata));
 		if (!(parsing(argv[1], &initdata)))
-			return (exit_program("Parsing - NOK\n exiting Cube3D", initdata));
+			return (exit_program("Error:Parsing - NOK\n", initdata));
 		if (!validation(&initdata))
-			return (exit_program("Validation NOK\n exiting Cube3D", initdata));
+			return (exit_program("Error:Validation NOK\n", initdata));
 		if (!execute(&initdata))
-			return (exit_program("Execution NOK\n exiting Cube3D", initdata));
+			return (exit_program("Error:Execution NOK\n", initdata));
 	}
 	else
-		return (exit_program("Program needs 1 parameter: ex.cub", initdata));
+		return (exit_program("Error: Program needs 1 parameter: ex.cub", initdata));
 	exit_program("Normal program exit", initdata);
 	return (1);
 }

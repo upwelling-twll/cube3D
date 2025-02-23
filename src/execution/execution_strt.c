@@ -41,7 +41,7 @@ bool	set_image(t_game_data **iData, t_txtr *texture)
 	texture->img = mlx_xpm_file_to_image((*iData)->mlx, texture->path,
 			&texture->width, &texture->height);
 	if (!texture->img)
-		return (print_message("Problem reading texture file"), false);
+		return (print_message("Error:Problem reading texture file"), false);
 	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
 			&texture->line_len, &texture->endian);
 	return (true);
@@ -68,7 +68,7 @@ int	destroy_prog(t_game_data *iData)
 	mlx_destroy_image(iData->mlx, iData->so_path.img);
 	mlx_destroy_image(iData->mlx, iData->we_path.img);
 	mlx_destroy_image(iData->mlx, iData->ea_path.img);
-	exit_program("Exiting program from destroy program\n", iData);
+	exit_program("Exiting program from ESC\n", iData);
 	exit (1);
 }
 
@@ -77,11 +77,11 @@ bool	execute(t_game_data **iData)
 	get_spawn_posit(iData);
 	(*iData)->mlx = mlx_init();
 	if (!init_sources(iData))
-		return (print_message("execution: failed init sources"), false);
+		return (print_message("Error:Failed processing sources"), false);
 	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H,
 			"Cube_3D");
 	draw_map(iData);
-	mlx_hook((*iData)->win_ptr, 2, 0, key_hook, iData);
+	mlx_hook((*iData)->win_ptr, 2, 1, key_hook, iData);
 	mlx_hook((*iData)->win_ptr, 17, 0, &destroy_prog, *iData);
 	mlx_loop((*iData)->mlx);
 	return (true);

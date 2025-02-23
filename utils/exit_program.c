@@ -73,6 +73,7 @@ int	exit_program(char *text, t_game_data *initData)
 		clean_textures(initData);
 	if (initData)
 		free(initData);
+	printf("Exiting Cube3D\n");
 	return (1);
 }
 
