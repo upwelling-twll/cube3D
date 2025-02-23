@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 			return (exit_program("Error:Execution NOK\n", initdata));
 	}
 	else
-		return (exit_program("Error: Program needs 1 parameter: ex.cub", initdata));
+		return (exit_program("Error:Program needs 1 param:ex.cub", initdata));
 	exit_program("Normal program exit", initdata);
 	return (1);
 }
