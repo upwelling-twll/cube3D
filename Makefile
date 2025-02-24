@@ -24,6 +24,8 @@ FLAGS = -Wall -Wextra -Werror -O3 -g #-fsanitize=address
 
 LIBFT:= libft/libft.a
 
+MLX = mlx_linux/libmlx.a
+
 LIBS :=
 ifeq ($(UNAME_S),Darwin) # MacOS
     FLAGS += -Imlx
@@ -40,11 +42,14 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
-	@ $(CC) $(OBJ) $(LIBS) -o $(NAME) $(LIBFT)
+$(NAME): $(LIBFT) $(MLX) $(OBJ)
+	@ $(CC) $(OBJ) $(LIBS) -o $(NAME) $(LIBFT) $(MLX)
 #-fsanitize=address -g3
 $(LIBFT):
 	@ make -C libft/ >/dev/null
+
+$(MLX):
+	@ make -C mlx_linux/ >/dev/null
 
 clean: 
 	@ $(RM) $(OBJ)
