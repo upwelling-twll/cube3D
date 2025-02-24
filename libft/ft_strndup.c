@@ -18,7 +18,6 @@ char	*ft_strndup(const char *s1, ssize_t len)
 	ssize_t	i;
 
 	i = 0;
-	// pritnf("len to copy:%zu\n", len);
 	if (!s1)
 		return (NULL);
 	if (ft_strlen_sst(s1) < len)
@@ -31,6 +30,6 @@ char	*ft_strndup(const char *s1, ssize_t len)
 		*(char *)(cp + i) = *(char *)(s1 + i);
 		i++;
 	}
-	 *(char *)(cp + i ) = '\0';
+	*(char *)(cp + i) = '\0';
 	return (cp);
 }
