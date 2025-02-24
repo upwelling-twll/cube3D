@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: nmagdano <nmagdano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:19:55 by ssiddiqu          #+#    #+#             */
-/*   Updated: 2025/02/21 17:51:07 by ssiddiqu         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:59:02 by nmagdano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 # define WINDOW_H 512 //480
 # define PI 3.14
 # define FOV 1.047f //60 degrees
-# define W	119 //13 macos
-# define A	97 //0 macos
-# define S	115	//1 macos
-# define D	100	//2 macos
-# define UP	65362 //126 macos
-# define DOWN 65364 //125 macos
-# define LEFT	65361 //123 macos
-# define RIGHT	65363 //124 macos
-# define ESC	65307	//53 macos
+# define W	13
+# define A	0
+# define S	1
+# define D	2
+# define UP		126
+# define DOWN	125
+# define LEFT	123
+# define RIGHT	124
+# define ESC	53
 
 typedef struct s_vec
 {

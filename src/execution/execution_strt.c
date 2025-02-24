@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_strt.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: nmagdano <nmagdano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:37:17 by ssiddiqu          #+#    #+#             */
-/*   Updated: 2025/02/21 17:50:49 by ssiddiqu         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:03:36 by nmagdano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	destroy_prog(t_game_data *iData)
 	mlx_destroy_image(iData->mlx, iData->so_path.img);
 	mlx_destroy_image(iData->mlx, iData->we_path.img);
 	mlx_destroy_image(iData->mlx, iData->ea_path.img);
-	exit_program("Exiting program from ESC\n", iData);
+	exit_program(NULL, iData);
 	exit (1);
 }
 
@@ -81,7 +81,7 @@ bool	execute(t_game_data **iData)
 	(*iData)->win_ptr = mlx_new_window((*iData)->mlx, WINDOW_W, WINDOW_H,
 			"Cube_3D");
 	draw_map(iData);
-	mlx_hook((*iData)->win_ptr, 2, 1, key_hook, iData);
+	mlx_hook((*iData)->win_ptr, 2, 0, key_hook, iData);
 	mlx_hook((*iData)->win_ptr, 17, 0, &destroy_prog, *iData);
 	mlx_loop((*iData)->mlx);
 	return (true);
