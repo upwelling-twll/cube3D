@@ -107,13 +107,13 @@ bool	raycasting(t_game_data **idata)
 	float	v;
 	int		x;
 
-	v = (*idata)->angle - FOV / 2;
+	v = (*idata)->angle + FOV / 2;
 	dv = FOV / (WINDOW_W - 1);
 	x = -1;
 	while (++x < WINDOW_W)
 	{
 		set_line((*idata), x, set_ray((*idata), v) * cos((*idata)->angle - v));
-		v = v + dv;
+		v = v - dv;
 	}
 	return (true);
 }
