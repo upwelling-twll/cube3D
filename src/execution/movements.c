@@ -66,9 +66,9 @@ int	key_hook(int keycode, t_game_data **data)
 	if (keycode == S)
 		move(data, 2);
 	if (keycode == A)
-		move(data, 3);
-	if (keycode == D)
 		move(data, 1);
+	if (keycode == D)
+		move(data, 3);
 	if (keycode == LEFT)
 		rotate(LEFT, *data);
 	if (keycode == RIGHT)
@@ -79,9 +79,9 @@ int	key_hook(int keycode, t_game_data **data)
 int	rotate(int keycode, t_game_data *data)
 {
 	if (keycode == RIGHT)
-		data->angle += ROTATE;
-	if (keycode == LEFT)
 		data->angle -= ROTATE;
+	if (keycode == LEFT)
+		data->angle += ROTATE;
 	if (data->angle < 0)
 		data->angle += 2.f * M_PI;
 	if (data->angle > 2.f * M_PI)
