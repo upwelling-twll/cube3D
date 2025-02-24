@@ -90,11 +90,11 @@ char	**remove_last_nlsp(t_game_data **idata)
 		if (!is_empty_line(map[i]))
 		{
 			if (!is_valid_line(map[i]))
-				return (print_message("line is invalid"), NULL);
+				return (print_message("Error:Map is invalid"), NULL);
 			i++;
 		}
 		else if (!end_of_map(map, i))
-			return (print_message("error:next lines are unempty"), NULL);
+			return (print_message("Error:Map is invalid"), NULL);
 		else
 			break ;
 	}
