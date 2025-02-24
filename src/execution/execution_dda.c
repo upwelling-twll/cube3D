@@ -29,7 +29,7 @@ void	set_line(t_game_data *idata, int x, float dist_to_wall)
 		h = WINDOW_H;
 	}
 	src = (unsigned int *)idata->cur_txt.addr;
-	src += (int)((float) idata->txt_w * idata->cur_txt.width);
+	src += (int)((1.0f - idata->txt_w) * idata->cur_txt.width);
 	dst = (unsigned int *) idata->img.addr + x + (WINDOW_H - h) / 2 * WINDOW_W;
 	while (h-- > 0)
 	{
