@@ -34,7 +34,7 @@ bool	has_one_hero(char **lmap)
 		}
 		i++;
 	}
-	if (n == 1)
+	if (n == 1 && good_pos(lmap))
 		return (true);
 	return (false);
 }
@@ -53,14 +53,14 @@ bool	is_wall(char *line)
 		if (line[i] == '1')
 			wall++;
 		if (line[i] == '\n' && wall == 0)
-			return (print_message("last map line is NOT wall"), false);
+			return (print_message("Error:Last map line is NOT wall"), false);
 		if (line [i] != '1' && line[i] != ' ' && line[i] != '\n')
-			return (print_message("last map line is NOT wall"), false);
+			return (print_message("Error:Last map line is NOT wall"), false);
 		i++;
 	}
 	if (wall > 0)
 		return (true);
-	return (print_message("last map line is NOT wall"), false);
+	return (print_message("Error:Map wall invalid"), false);
 }
 
 bool	replace_sp_to_x(t_game_data **idata, int rows)
@@ -86,15 +86,6 @@ bool	replace_sp_to_x(t_game_data **idata, int rows)
 	return (true);
 }
 
-bool	compare_maps(char **spmap, char **vmap)
-{
-	if (spmap)
-		printf("function compare_maps:STUB\n");
-	if (!vmap)
-		return (true);
-	return (true);
-}
-
 bool	is_valid_map(t_game_data **idata, char **lmap)
 {
 	int		lnum;
@@ -103,19 +94,19 @@ bool	is_valid_map(t_game_data **idata, char **lmap)
 	nmap = NULL;
 	lnum = 0;
 	if (!(has_one_hero(lmap)))
-		return (print_message("Map validation: character issue"), false);
+		return (print_message("Error:Player issue"), false);
 	if (!is_wall(lmap[0]))
-		return (print_message("first map line is NOT wall"), false);
+		return (print_message("Error:First map line is NOT wall"), false);
 	nmap = remove_last_nlsp(idata);
 	if (!nmap)
-		return (print_message("map error: after removing last nlsp"), false);
+		return (print_message("Error:Map error"), false);
 	lnum = get_array_size((*idata)->maplines);
 	if (!is_wall(nmap[lnum - 1]))
-		return (print_message("walls check failed"), false);
+		return (print_message("Error:Walls check failed"), false);
 	if (!(replace_sp_to_x(idata, lnum)))
-		return (print_message("replacing 'spaces' to 'x' error"), false);
+		return (print_message("Error:Saving map error"), false);
 	if (!check_walls((*idata)->maplines, (*idata)->map_height,
 			(*idata)->map_widht))
-		return (print_message("Spaces check failed"), false);
+		return (print_message("Error:Map spaces check failed"), false);
 	return (true);
 }

@@ -72,17 +72,17 @@ bool	validation(t_game_data **idata)
 {
 	if (!(*idata) || !((*idata)->initlines) || !((*idata)->maplines))
 	{
-		printf("validation:no init data or lines or map\n");
+		printf("Error:Incorrect file content (empty or no map)\n");
 		return (false);
 	}
 	if (!valid_elements(idata))
 	{
-		printf("validation: validating elements failed\n");
+		printf("Error:Validating elements failed\n");
 		return (false);
 	}
 	if (!valid_map(idata))
 	{
-		printf("validation: validating map failed\n");
+		printf("Error:Invalid map\n");
 		return (false);
 	}
 	return (true);
