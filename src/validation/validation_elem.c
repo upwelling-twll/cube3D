@@ -37,7 +37,7 @@ bool	correct_colours(char *cpline)
 	colour = -1;
 	if (!line || is_eof(*line) || is_empty_line(line))
 		return (false);
-	while (i < 3 && *line)
+	while (i < 3 && *line && !is_empty_line(line))
 	{
 		colour = ft_atoi(line);
 		if (colour < 0 || colour > 255)
