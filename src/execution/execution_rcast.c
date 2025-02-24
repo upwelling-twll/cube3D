@@ -15,11 +15,11 @@
 static float	save_colour(t_game_data *data, float d, int c, float w)
 {
 	if (c == 0)
-		data->cur_txt = data->we_path;
+		data->cur_txt = data->ea_path;
 	if (c == 1)
 		data->cur_txt = data->so_path;
 	if (c == 2)
-		data->cur_txt = data->ea_path;
+		data->cur_txt = data->we_path;
 	if (c == 3)
 		data->cur_txt = data->no_path;
 	data->txt_w = w;
