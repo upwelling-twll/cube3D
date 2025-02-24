@@ -38,9 +38,9 @@ bool	has_space_around(char **map, int y, int x)
 bool	on_eage(int y, int x, int height, int widht)
 {
 	if (y == 0 || y >= height)
-		return (print_message("0 on eage"), true);
+		return (true);
 	else if (x == 0 || x >= widht)
-		return (print_message("0 on eage"), true);
+		return (true);
 	else
 		return (false);
 }
@@ -60,10 +60,9 @@ bool	check_walls(char **map, int height, int widht)
 			if (map[i][j] == '0' || is_hero(map[i][j]))
 			{
 				if (on_eage(i, j, height, widht) || has_space_around(map, i, j))
-				{
-					printf("check walls return false, line:%s\n", map[i]);
 					return (false);
-				}
+				if (map[i][j + 1] == '\0' || map[i][j + 1] == '\n')
+					return (false);
 			}
 			j++;
 		}

@@ -53,9 +53,9 @@ bool	is_wall(char *line)
 		if (line[i] == '1')
 			wall++;
 		if (line[i] == '\n' && wall == 0)
-			return (print_message("Error:Last map line is NOT wall"), false);
+			return (false);
 		if (line [i] != '1' && line[i] != ' ' && line[i] != '\n')
-			return (print_message("Error:Last map line is NOT wall"), false);
+			return (false);
 		i++;
 	}
 	if (wall > 0)
