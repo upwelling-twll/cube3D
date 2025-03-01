@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssiddiqu <ssiddiqu@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: nmagdano <nmagdano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:59:14 by ssiddiqu          #+#    #+#             */
-/*   Updated: 2025/02/19 18:07:23 by ssiddiqu         ###   ########.fr       */
+/*   Updated: 2025/03/01 13:46:08 by nmagdano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/execution.h"
+#include "../inc/execution.h"
 
 int	main(int argc, char *argv[])
 {
