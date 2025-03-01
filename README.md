@@ -12,13 +12,21 @@ change line 52
 lines 23 - 31 (change key hooks codes)
 
     #define W	119 //13 macos
+
     #define A	97 //0 macos
+
     #define S	115	//1 macos
+
     #define D	100	//2 macos
+
     #define UP	65362 //126 macos
+
     #define DOWN 65364 //125 macos
+
     #define LEFT	65361 //123 macos
+
     #define RIGHT	65363 //124 macos
+
     #define ESC	65307	//53 macos
 
 3) src/execution/execution_strt.c
