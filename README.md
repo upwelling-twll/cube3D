@@ -1,3 +1,5 @@
+![Demo](media/cubGif.gif)
+
 # to compile on Linux:
 
 1) Makefile
