@@ -36,8 +36,9 @@ this can be checked through deducated mlx function, that will return the pointer
 this map is ok:
 111111111111111
 111001 11
-1 1W1
-110010
+1 1W11
+1100101
+1111111
 
 parsing map: any map is valid untill there is no nl between lines and 
 there is no situation when empty_space is surrounded by 0 or character(NSWE):
